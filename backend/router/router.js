@@ -1,16 +1,8 @@
-const express = require("express")
+const express = require('express');
+const router = express.Router();
+const signInController = require('../controllers/SignInController');
 
-const router = express.Router()
-
-// router.get("/",(req,res)=>{
-//     res.status(200).send("this is route")
-// })
-
-router.route("/").get((req,res)=>{
-    res.status(200).send("this is route with")
-})
-router.route("/register").get((req,res)=>{
-    res.status(200).send("this is route with register")
-})
+// POST route for signing in
+router.post('/signin', signInController);
 
 module.exports = router;
