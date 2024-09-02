@@ -10,6 +10,7 @@ import { RiAdminFill } from "react-icons/ri";
 
 import "../App.css";
 import { Link, Outlet } from "react-router-dom";
+import Heading from "./Heading";
 
 const SideBar = () => {
   return (
@@ -45,7 +46,7 @@ const SideBar = () => {
         <main className="w-full h-full p-2">
           <div className="mb-16">
             {" "}
-  
+      <Heading/>
           </div>
           <Outlet/>
         </main>
