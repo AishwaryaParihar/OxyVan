@@ -58,7 +58,7 @@ const LeaderBoard = () => {
           trigger: ".heading",
           start: "top 90%",
           end: "bottom 70%",
-          scrub: true,
+          toggleActions: "play none none none",
         },
       }
     );
@@ -74,7 +74,7 @@ const LeaderBoard = () => {
           trigger: ".heading",
           start: "top 90%",
           end: "bottom 70%",
-          scrub: true,
+          toggleActions: "play none none none",
         },
       }
     );
@@ -92,7 +92,7 @@ const LeaderBoard = () => {
           trigger: ".heading",
           start: "top 90%",
           end: "bottom 70%",
-          scrub: true,
+          toggleActions: "play none none none",
         },
       }
     );
@@ -101,10 +101,13 @@ const LeaderBoard = () => {
   return (
     <div className="w-full mx-auto mt-3 p-4 px-8 heading">
       <div className="flex justify-center ">
-        <div className="heading01">Leader Board</div>
+        <div className="heading01">Oxyvan</div>
         <img src={headlogo1} className="h-14 inline" alt="Leader Board Logo" />
       </div>
-      <div className="subheading">
+      <div className="subheading ">
+      At Oxyvan, we're committed to making the world a greener, healthier place for everyone. Our mission is simple: to plant trees that will produce oxygen, absorb carbon dioxide, and provide a cleaner, more sustainable environment for future generations. We believe that by working together, we can combat climate change and create a better planet for all.
+     
+<br />
         "Meet the champions of our cause! Whether through dedicated service or
         generous contributions, these top volunteers and donors have gone above
         and beyond to support our mission. Their unwavering commitment and

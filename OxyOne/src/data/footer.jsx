@@ -12,16 +12,16 @@ export const footerData = [
     {
         title: "Gallery",  // Corrected from "Galary"
         icon: <GrGallery />,
-        href: "/"
+        href: "/gallery"
     },
     {
         title: "Contact Us",  // Corrected from "titile"
         icon: <MdContactSupport />,
-        href: "/"
+        href: "/contactus"
     },
     {
         title: "Donate",
         icon: <BiSolidDonateHeart  />,
-        href: "/"
+        href: "/donate"
     },
 ];

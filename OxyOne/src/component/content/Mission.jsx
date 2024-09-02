@@ -20,7 +20,7 @@ const Mission = () => {
           trigger: ".section-text-container",
           start: "top 80%",
           end: "bottom 60%",
-          scrub: true,
+          toggleActions: "play none none none",
         },
       }
     );
@@ -37,7 +37,7 @@ const Mission = () => {
           trigger: ".planting-image",
           start: "top 80%",
           end: "bottom 60%",
-          scrub: true,
+          toggleActions: "play none none none",
         },
       }
     );
@@ -50,7 +50,7 @@ const Mission = () => {
     },
     {
       title: "What we do",
-      text: "Oxyvan is a globally recognised non-profit organisation focused on environmental conservation and sustainable, socially just development. ATREE engages in the generation and dissemination of rigorous interdisciplinary knowledge that informs and is informed by the needs of grassroots communities, policymakers, and the wider public. It prioritises capacity-building for producing the next generation of scholars.",
+      text: "Oxyvan focuses on large-scale tree plantation projects in areas that need it the most. From urban spaces to deforested regions, we are on a mission to plant millions of trees that will restore natural ecosystems, improve air quality, and support biodiversity.",
     },
   ];
 

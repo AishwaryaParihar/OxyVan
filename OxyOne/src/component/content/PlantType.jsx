@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
-import tree from "../../assets/jamun.jpg";
 import tree1 from "../../assets/banyan.webp";
+import arjuna from "../../assets/arjuna.webp";
+import neem from "../../assets/neem.jfif";
+import pipal from "../../assets/pipal.jfif";
+import sandlewood from "../../assets/sandlewood.jpg";
 import earth from "../../assets/earth.png";
 import headlogo1 from "../../assets/flower-pot.png";
 import { gsap } from "gsap";
@@ -23,7 +26,7 @@ const PlantType = () => {
           trigger: ".plant-image",
           start: "top 80%",
           end: "bottom 60%",
-          scrub: true,
+          toggleActions: "play none none none",
         },
       }
     );
@@ -41,7 +44,7 @@ const PlantType = () => {
           trigger: ".plant-text",
           start: "top 80%",
           end: "bottom 60%",
-          scrub: true,
+          toggleActions: "play none none none",
         },
       }
     );
@@ -69,7 +72,7 @@ const PlantType = () => {
                 <img
                   src={tree1}
                   alt="Banyan Tree"
-                  className="w-24 h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -88,9 +91,9 @@ const PlantType = () => {
             <div className="flex py-1 ms-0 sm:ms-20 items-start plant-text">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
-                  src={tree1}
+                  src={pipal}
                   alt="Peepal Tree"
-                  className="w-24 h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -106,9 +109,9 @@ const PlantType = () => {
             <div className="flex py-1 ms-0 sm:ms-32 items-start plant-text">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
-                  src={tree1}
+                  src={neem}
                   alt="Neem Tree"
-                  className="w-24 h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -124,9 +127,9 @@ const PlantType = () => {
             <div className="flex py-1 ms-0 sm:ms-20 items-start plant-text">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
-                  src={tree1}
+                  src={arjuna}
                   alt="Arjuna Tree"
-                  className="w-24 h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -145,9 +148,9 @@ const PlantType = () => {
             <div className="flex py-1 items-start plant-text">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
-                  src={tree1}
+                  src={sandlewood}
                   alt="Sandalwood Tree"
-                  className="w-24 h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">

@@ -27,7 +27,7 @@ const AboutIntro = () => {
             The Oxyvan is a global environmental nonprofit working to create a world where people and nature can thrive.
           </h2>
           <p className="mt-4 text-xs sm:text-base md:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cumque eligendi aspernatur maxime laboriosam, corrupti qui saepe! Dignissimos, totam quaerat. Blanditiis sed ab qui perferendis quaerat saepe atque. Consequatur accusantium voluptates voluptate eaque impedit explicabo natus ea nulla dolorum. Tempore a, modi in quibusdam ipsa dignissimos exercitationem impedit expedita at ratione ipsum sit praesentium doloremque facere soluta, voluptatem optio enim sint pariatur.
+          At Oxyvan, we envision a future where the health of our planet is paramount. We believe that the well-being of people is intrinsically linked to the health of our environment. By focusing on sustainable practices and large-scale environmental restoration, we aim to foster a harmonious relationship between people and nature, ensuring a livable planet for future generations. Our mission is to restore the balance between human life and the natural world by protecting, preserving, and rejuvenating the planet’s ecosystems.
           </p>
         </div>
       </div>
