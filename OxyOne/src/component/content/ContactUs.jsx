@@ -18,6 +18,15 @@ const ContactUs = () => {
             />
           </div>
           <div className="mb-4">
+            <label htmlFor="number" className="block text-green-800 font-semibold mb-2">Contact Number</label>
+            <input
+              type="tel"
+              id="number"
+              className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Your Number"
+            />
+          </div>
+          <div className="mb-4">
             <label htmlFor="email" className="block text-green-800 font-semibold mb-2">Email</label>
             <input
               type="email"
