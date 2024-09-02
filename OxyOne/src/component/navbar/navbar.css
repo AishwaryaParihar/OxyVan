@@ -1,0 +1,12 @@
+.custom-nav {
+    padding: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Added transition for smooth effects */
+}
+
+.custom-nav:hover {
+    /* background-color: #04471c; */
+    color: #04471c;
+    font-weight: 700;
+    padding: 6px;
+    transform: scale(1.05); /* Slightly increase the size on hover */
+}
