@@ -112,14 +112,14 @@ const Hero = () => {
           We are dedicated to restoring our planet's natural beauty.
           <br /> Join us in making a difference.
         </p>
-        <div className="space-x-4">
+        {/* <div className="space-x-4">
           <NavLink
             to="/donate"
             className="inline-block text-white bg-yellow-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg w-28 text-center py-2 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
           >
             Donate
           </NavLink>
-        </div>
+        </div> */}
       </div>
       <div className="md:w-1/2 w-full flex justify-center mt-8 md:mt-0">
         <div className="grid grid-cols-2 gap-4 w-full">

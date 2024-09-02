@@ -6,6 +6,7 @@ import About from "../component/content/About";
 import Gallery from "../component/content/Gallery";
 import ContactUs from "../component/content/ContactUs";
 import Donate from "../component/content/Donate";
+import Register from "../component/content/Register";
 
 export const router = createBrowserRouter([
     
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
             {
                 path: "contactus",
                 element: <ContactUs/>
+            },
+            {
+                path:"/register",
+                element: <Register/>
             },
             {
                 path: "donate",
