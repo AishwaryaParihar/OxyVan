@@ -5,4 +5,9 @@ const SummaryApi = {
         url: `${backendDomain}/api/signUp`,
         method: "post",
       },
+      contactAll:{
+        
+        url: `${backendDomain}/api/get-contact`,
+        method: "post",
+      }
     }
