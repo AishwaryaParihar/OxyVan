@@ -1,15 +1,22 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
+ 
   email: {
     type: String,
-    required: true,
     unique: true,
+    required: true,
+    lowercase: true, // Optional: Converts email to lowercase
+    trim: true // Optional: Trims whitespace from email
   },
   password: {
     type: String,
-    required: true,
-  },
+    required: true // Added required validation for password
+  }
+}, {
+  timestamps: true
 });
 
-module.exports = mongoose.model('User', userSchema);
+const UserModel = mongoose.model("Userall", userSchema);
+
+module.exports = UserModel;
