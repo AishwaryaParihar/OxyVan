@@ -6,6 +6,8 @@ const cors = require('cors');
 const cookieparser = require('cookie-parser');
 const router = require('./router/router');
 
+
+app.use(cors());
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(cookieparser()); // Middleware to parse cookies
 app.use(express.urlencoded({ extended: false })); // Middleware to parse URL-encoded bodies
