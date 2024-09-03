@@ -10,7 +10,7 @@ const ContactForm = () => {
             <th className='p-2 text-left'>Name</th>
             <th className='p-2 text-left'>Email</th>
             <th className='p-2 text-left'>Contact No </th>
-            <th className='p-2 text-left'>Product</th>
+            <th className='p-2 text-left'>Massage</th>
             <th className='p-2 text-left'>Created Date</th>
           </tr>
         </thead>
