@@ -7,7 +7,7 @@ import donate04 from "../../assets/DONATE04.png";
 
 const Donate = () => {
   return (
-    <div className="flex flex-col lg:flex-row my-28 lg:justify-center mx-4 lg:mx-40  shadow-2xl shadow-lime-500">
+    <div className="flex flex-col lg:flex-row my-28 lg:justify-center lg:items-center mx-4 lg:mx-40  shadow-2xl shadow-lime-500">
       {/* 2nd Item (Moves to the bottom on smaller screens) */}
       <div className="shadow-2xl bg-primary lg:w-[30%] order-2 lg:order-none text-white font-semibold p-5 py-12 flex flex-col justify-center">
         <div className="text-center mb-12 text-3xl lg:text-5xl underline">

@@ -19,7 +19,7 @@ const AboutIntro = () => {
 
   return (
     <div className="relative">
-      <img src={hero} alt="Hero" className="w-full h-[70vh] md:h-[85vh] lg:h-[100vh] object-cover rotate-180" />
+      <img src={hero} alt="Hero" className="w-full h-[63vh] md:h-[85vh] lg:h-[100vh] object-cover rotate-180" />
 
       <div className="absolute top-[30%] right-4 md:right-8 lg:right-12 w-11/12 sm:w-3/4 md:w-1/2 bg-white p-4 sm:p-6 md:p-8 shadow-lg rounded-sm intro-text">
         <div className="text-center">
