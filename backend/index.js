@@ -2,11 +2,25 @@ require('dotenv').config(); // Load environment variables
 const express = require('express');
 const app = express();
 const connectDB = require('./config/db');
-const authRoutes = require('./routes/authRoutes'); // Import the auth routes
+const bodyparser = require('body-parser');
+const cors = require('cors');
+const cookieparser = require('cookie-parser')
+const router = require('./router/router');
 
 app.use(express.json()); // Middleware to parse JSON bodies
 
-app.use('/api', authRoutes); // Use the auth routes under the /api endpoint
+app.use(express.json());
+app.use(bodyparser.json());
+app.use(cookieparser());
+app.use(express.urlencoded({ extended: false }));
+
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
+
+
+
+app.use('/api', router); 
 
 const PORT = process.env.PORT || 8080;
 
