@@ -21,7 +21,7 @@ const Register = () => {
         <div className="flex gap-4">
           <div className="w-1/2">
             <button 
-              className={`w-full py-2 font-semibold ${formType === 'volunteer' ? 'bg-green-700' : 'bg-green-900'} text-white`} 
+              className={`w-full py-2 font-semibold ${formType === 'volunteer' ? 'bg-primary' : 'bg-green-700'} text-white`} 
               onClick={() => handleButtonClick('volunteer')}
             >
               As a Volunteer
@@ -29,7 +29,7 @@ const Register = () => {
           </div>
           <div className="w-1/2">
             <button 
-              className={`w-full py-2 font-semibold ${formType === 'donor' ? 'bg-green-700' : 'bg-green-900'} text-white`} 
+              className={`w-full py-2 font-semibold ${formType === 'donor' ? 'bg-primary' : 'bg-green-700'} text-white`} 
               onClick={() => handleButtonClick('donor')}
             >
               As a Donor
@@ -39,7 +39,7 @@ const Register = () => {
 
         <div className="mt-8">
           {formType === 'volunteer' && (
-            <div className="p-6 bg-green-100 rounded-lg shadow-md">
+            <div className="p-6 contactbg rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4 text-green-800">Volunteer Registration Form</h3>
               {/* Volunteer form fields */}
              <VolunteerForm/>
@@ -47,7 +47,7 @@ const Register = () => {
           )}
 
           {formType === 'donor' && (
-            <div className="p-6 bg-green-100 rounded-lg shadow-md">
+            <div className="p-6 contactbg rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-4 text-green-800">Donor Registration Form</h3>
               {/* Donor form fields */}
               <DonerForm/>

@@ -1,20 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ContactUs.module.css";
 
 const ContactUs = () => {
+  const[data, setData]=useState(
+    {
+      name:"",
+      number:"",
+      email:"",
+      msg:""
+    }
+  )
+   const handleOnChange=(e)=>{
+    const {name,value}=e.target;
+    setData({
+      ...data,
+      [name]:value
+    })
+   }
+  
+   const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log("contact form data", data)
+   }
+
   return (
     <div className="flex flex-col lg:flex-row justify-center items-start lg:items-center lg:space-x-10 py-12 px-4 lg:px-16 contactbg bg-SeaBlue">
       {/* Form Column */}
       <div className="lg:w-1/2 w-full mb-8 lg:mb-0">
         <h2 className="text-3xl font-bold text-green-700 mb-6">Contact Us</h2>
-        <form className={`${styles.form} bg-white p-6 rounded-lg shadow-lg`}>
+        <form className={`${styles.form} bg-white p-6 rounded-lg shadow-lg`} onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-green-800 font-semibold mb-2">Name</label>
+            <label htmlFor="name" className="block text-green-800 font-semibold mb-2"
+       
+            >Name</label>
             <input
               type="text"
               id="name"
               className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Your Name"
+              name="name"
+              value={data.name}
+              onChange={handleOnChange}
             />
           </div>
           <div className="mb-4">
@@ -24,6 +50,9 @@ const ContactUs = () => {
               id="number"
               className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Your Number"
+              name="number"
+              value={data.number}
+              onChange={handleOnChange}
             />
           </div>
           <div className="mb-4">
@@ -33,15 +62,21 @@ const ContactUs = () => {
               id="email"
               className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Your Email"
+              name="email"
+              value={data.email}
+              onChange={handleOnChange}
             />
           </div>
           <div className="mb-4">
             <label htmlFor="message" className="block text-green-800 font-semibold mb-2">Message</label>
             <textarea
-              id="message"
+              id="msg"
               className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Your Message"
               rows="5"
+              name="msg"
+              value={data.msg}
+              onChange={handleOnChange}
             ></textarea>
           </div>
           <button
