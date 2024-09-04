@@ -4,6 +4,8 @@ import arjuna from "../../assets/arjuna.webp";
 import neem from "../../assets/neem.jfif";
 import pipal from "../../assets/pipal.jfif";
 import sandlewood from "../../assets/sandlewood.jpg";
+import jamun from "../../assets/jamun.jpg";
+import bamboo from "../../assets/bamboo.webp";
 import earth from "../../assets/earth.png";
 import headlogo1 from "../../assets/flower-pot.png";
 import { gsap } from "gsap";
@@ -62,17 +64,17 @@ const PlantType = () => {
           environment by producing abundant oxygen, essential for life on Earth.
         </div>
 
-        <div className="flex flex-col lg:flex-row py-1 mt-0 lg:mt-4">
-          <div className="w-full lg:w-1/2 text-center p-2 plant-image">
-            <img src={earth} alt="Earth" className="w-full " />
+        <div className="flex flex-col lg:flex-row py-1 mt-0 lg:mt-4 text-center justify-center items-center">
+          <div className="w-full lg:w-1/2  p-2 plant-image ">
+            <img src={earth} alt="Earth" className="w-full h-full" />
           </div>
           <div className="w-full lg:w-1/2 text-xs md:p-2 rounded-2xl md:mt-6 text-justify">
-            <div className="flex items-start plant-text">
+            <div className="flex items-start plant-text ps-0">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
                   src={tree1}
                   alt="Banyan Tree"
-                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -93,7 +95,7 @@ const PlantType = () => {
                 <img
                   src={pipal}
                   alt="Peepal Tree"
-                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -105,13 +107,28 @@ const PlantType = () => {
                 </div>
               </span>
             </div>
-
             <div className="flex py-1 ms-0 sm:ms-32 items-start plant-text">
+              <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
+                <img
+                  src={bamboo}
+                  alt="Peepal Tree"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover plant-image"
+                />
+              </span>
+              <span className="ps-3">
+                <div className="text-lg text-primary font-bold">Bamboo Tree</div>
+                <div className="text-sm">
+                Bamboo is a fast-growing, sustainable resource that helps in reducing deforestation and absorbs more CO2 than other trees, making it great for combating climate change.
+                </div>
+              </span>
+            </div>
+
+            <div className="flex py-1 ms-0 sm:ms-40 items-start plant-text">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
                   src={neem}
                   alt="Neem Tree"
-                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -124,12 +141,12 @@ const PlantType = () => {
               </span>
             </div>
 
-            <div className="flex py-1 ms-0 sm:ms-20 items-start plant-text">
+            <div className="flex py-1 ms-0 sm:ms-32 items-start plant-text">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
                   src={arjuna}
                   alt="Arjuna Tree"
-                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
@@ -144,13 +161,30 @@ const PlantType = () => {
                 </div>
               </span>
             </div>
+            <div className="flex py-1 ms-0 sm:ms-20 items-start plant-text">
+              <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
+                <img
+                  src={jamun}
+                  alt="Arjuna Tree"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover plant-image"
+                />
+              </span>
+              <span className="ps-3">
+                <div className="text-lg text-primary font-bold">
+                  Jamun Tree
+                </div>
+                <div className="text-sm">
+                Jamun is rich in vitamins, antioxidants, and minerals. It is known to help manage blood sugar levels, making it beneficial for diabetics.Jamun helps in maintaining a healthy heart by controlling blood pressure and cholesterol levels.
+                </div>
+              </span>
+            </div>
 
-            <div className="flex py-1 items-start plant-text">
+            <div className="flex py-1 items-start plant-text ps-0">
               <span className="flex-shrink-0 border-4 border-green-700 p-1 rounded-full">
                 <img
                   src={sandlewood}
                   alt="Sandalwood Tree"
-                  className="w-16 h-16 md:w-24 md:h-24 rounded-full object-cover plant-image"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover plant-image"
                 />
               </span>
               <span className="ps-3">
