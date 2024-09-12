@@ -11,7 +11,7 @@ const Donate = () => {
       {/* 2nd Item (Moves to the bottom on smaller screens) */}
       <div className="shadow-2xl bg-primary lg:w-[30%] order-2 lg:order-none text-white font-semibold p-5 py-12 flex flex-col justify-center">
         <div className="text-center mb-12 text-3xl lg:text-4xl underline">
-          Banking details
+          Bank<span className="text-secondary">ing det</span>ails
         </div>
         <div className="my-4 text-lg lg:text-xl">
           <span className="text-secondary">Bank Name:</span> SBI (State Bank Of India)
