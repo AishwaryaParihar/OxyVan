@@ -108,7 +108,7 @@ const DonorForm = () => {
       </div>
 
       {/* Donation Details */}
-      <h2 className="text-2xl font-bold mb-6 text-green-900">Donation Details</h2>
+      {/* <h2 className="text-2xl font-bold mb-6 text-green-900">Donation Details</h2>
       <div className="mb-4">
         <label className="block text-green-700">Donation Amount (₹)</label>
         <input
@@ -130,10 +130,10 @@ const DonorForm = () => {
           <option value="one-time">One-time donation</option>
           <option value="recurring">Recurring donation</option>
         </select>
-      </div>
+      </div> */}
 
       {/* Payment Information */}
-      <h2 className="text-2xl font-bold mb-6 text-green-900">Payment Information</h2>
+      {/* <h2 className="text-2xl font-bold mb-6 text-green-900">Payment Information</h2>
       <div className="mb-4">
         <label className="block text-green-700">Payment Method</label>
         <select
@@ -194,10 +194,10 @@ const DonorForm = () => {
             className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
           />
         </div>
-      )}
+      )} */}
 
       {/* Donation Purpose */}
-      <h2 className="text-2xl font-bold mb-6 text-green-900">Donation Purpose</h2>
+      {/* <h2 className="text-2xl font-bold mb-6 text-green-900">Donation Purpose</h2>
       <div className="mb-4">
         <label className="block text-green-700">Specify the purpose of your donation (optional)</label>
         <textarea
@@ -206,7 +206,7 @@ const DonorForm = () => {
           onChange={handleChange}
           className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
         ></textarea>
-      </div>
+      </div> */}
 
       {/* Additional Information */}
       <h2 className="text-2xl font-bold mb-6 text-green-900">Additional Information</h2>

@@ -8,8 +8,6 @@ const VolunteerRegistrationForm = () => {
     email: '',
     age: '',
     occupation: '',
-    areasOfInterest: [],
-    skills: [],
     availability: [],
     timeCommitment: '',
     reasonForVolunteering: '',
@@ -18,7 +16,7 @@ const VolunteerRegistrationForm = () => {
     trainingSession: '',
     adharCardImage: null,
     panCardImage: null,
-    signature: '',
+    note:'',
     date: '',
   });
 
@@ -130,8 +128,8 @@ const VolunteerRegistrationForm = () => {
           <label className="block text-green-700">Aadhar Card Image</label>
           <input
             type="file"
-            name="adharCardImage"
-            accept="image/*"
+            name="aadharImage"
+            // accept="image/*"
             onChange={handleChange}
             className="w-full p-2 border border-green-400 rounded"
           />
@@ -253,7 +251,9 @@ const VolunteerRegistrationForm = () => {
         <h2 className="text-xl font-semibold text-green-600 mb-4">Declaration</h2>
 
        <div className="mb-4">
-        <input type="checkbox" />
+        <input type="checkbox" name="note"
+                value="note"
+                onChange={handleChange} />
        <label className="text-green-700 mb-4 ps-2">
           I confirm that I am volunteering my time and services without expectation of payment or compensation. I understand that I will be required to abide by the organization's policies and procedures.
         </label>

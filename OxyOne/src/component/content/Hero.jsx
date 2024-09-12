@@ -155,10 +155,10 @@ const Hero = () => {
               Every action counts. Let’s turn our passion into purpose and make a lasting impact.
             </p>
             <NavLink
-              to="/donate"
+              to="/certificate"
               className="inline-block text-white bg-green-800 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-center py-1 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg mt-2"
             >
-              Get Involved
+              Get Certificate
             </NavLink>
           </div>
         </div>
