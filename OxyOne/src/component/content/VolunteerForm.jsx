@@ -145,6 +145,16 @@ const VolunteerRegistrationForm = () => {
             className="w-full p-2 border border-green-400 rounded"
           />
         </div>
+        <div className="mb-4">
+          <label className="block text-green-700">Passbook Image</label>
+          <input
+            type="file"
+            name="passbookImage"
+            accept="image/*"
+            onChange={handleChange}
+            className="w-full p-2 border border-green-400 rounded"
+          />
+        </div>
 
 
         {/* Availability */}
@@ -258,18 +268,6 @@ const VolunteerRegistrationForm = () => {
           I confirm that I am volunteering my time and services without expectation of payment or compensation. I understand that I will be required to abide by the organization's policies and procedures.
         </label>
        </div>
-
-        <div className="mb-4">
-          <label className="block text-green-700">Date</label>
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="w-full p-2 border border-green-400 rounded"
-          />
-        </div>
-
         <div className="text-center">
           <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
             Submit
