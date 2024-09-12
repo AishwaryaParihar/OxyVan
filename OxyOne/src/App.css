@@ -34,7 +34,9 @@ body{
 .text-second{
     color: #F7B32B;
 }
-
+.white-bg{
+  background-color: rgb(255, 255, 255);
+}
 .heading01{
    font-weight: 600;
    border-bottom: 3px ridge rgb(79, 143, 58);
