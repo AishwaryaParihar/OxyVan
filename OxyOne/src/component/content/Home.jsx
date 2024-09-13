@@ -6,6 +6,7 @@ import PlantType from './PlantType'
 import Testimonials from './Testimonials'
 import OurImpact from './OurImpact'
 import Mission from './Mission'
+import Demoo from './Demoo'
 const Home = () => {
   return (
     <div >
@@ -15,6 +16,7 @@ const Home = () => {
       <Mission/>
       <OurImpact/>
       <Testimonials/>
+      <Demoo age={14} name={'toshi'} pancard={false}/>
     </div>
   )
 }
