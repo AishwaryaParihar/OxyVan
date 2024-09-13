@@ -2,8 +2,7 @@ const express = require('express');
 const userSignInController = require('../controller/SignInController');
 const contactUsController = require('../controller/contactController');
 const getContactDetails = require('../controller/contactGet');
-const { volunteerDetailsController, upload } = require('../controller/volunteerDetails');
-// const { volunteerDetailsController, upload } = require('../controller/volunteerDetails');
+
 
 const router = express.Router();
 const multer = require('multer');
@@ -27,7 +26,6 @@ const upload = multer({ storage: storage });
 // POST route for signing in
 
 router.post('/signin', userSignInController);
-<<<<<<< HEAD
 router.post('/contact', contactUsController);
 router.get('/get-contact', getContactDetails);
 
@@ -53,10 +51,5 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
     res.json({ status: error });
   }
 });
-=======
-router.post("/contact",contactUsController)
-router.post('/volunteer', upload, volunteerDetailsController);
-router.get("/get-contact",getContactDetails )
->>>>>>> aac02b08b648bf4f06814899840309cae0220aed
 
 module.exports = router;

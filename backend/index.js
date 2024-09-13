@@ -10,7 +10,7 @@ const FRONT_URL = process.env.FRONT_URL;
 
 app.use(
   cors({
-    origin: [`${FRONT_URL}`], // Update with your frontend origin
+    origin: [`${Admin_url}`,`${FRONT_URL}`], // Update with your frontend origin
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   })
