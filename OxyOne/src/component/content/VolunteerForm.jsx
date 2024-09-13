@@ -157,36 +157,7 @@ const VolunteerRegistrationForm = () => {
         </div>
 
 
-        {/* Availability */}
-        <h2 className="text-xl font-semibold text-green-600 mb-4">Availability</h2>
-
-        <div className="mb-4">
-          <label className="block text-green-700 mb-2">Availability (check all that apply):</label>
-          {['Weekdays', 'Weekends', 'Flexible'].map(availability => (
-            <label key={availability} className="block text-green-600">
-              <input
-                type="checkbox"
-                name="availability"
-                value={availability}
-                onChange={handleChange}
-              />  {" "} {availability}
-            </label>
-          ))}
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-green-700 mb-2">Time commitment (check one):</label>
-          {['Less than 5 hours/week', '5-10 hours/week', 'More than 10 hours/week'].map(commitment => (
-            <label key={commitment} className="block text-green-600 ">
-              <input
-                type="radio"
-                name="timeCommitment"
-                value={commitment}
-                onChange={handleChange}
-              /> {" "} {commitment}
-            </label>
-          ))}
-        </div>
+       
 
         {/* Additional Information */}
         <h2 className="text-xl font-semibold text-green-600 mb-4">Additional Information</h2>
