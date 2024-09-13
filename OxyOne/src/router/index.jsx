@@ -7,6 +7,9 @@ import Gallery from "../component/content/Gallery";
 import ContactUs from "../component/content/ContactUs";
 import Donate from "../component/content/Donate";
 import Register from "../component/content/Register";
+import Certificates from "../component/content/Certificates";
+import Privacy from "../component/content/Privacy";
+import TermsConditions from "../component/content/TermsConditions";
 
 export const router = createBrowserRouter([
     
@@ -37,6 +40,18 @@ export const router = createBrowserRouter([
             {
                 path: "donate",
                 element: <Donate/>
+            },
+            {
+                path: "certificate",
+                element: <Certificates/>
+            },
+            {
+                path: "privacy-policy",
+                element: <Privacy/>
+            },
+            {
+                path: "terms-conditions",
+                element: <TermsConditions/>
             },
         ]
     }

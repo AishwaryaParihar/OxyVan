@@ -105,7 +105,7 @@ const LeaderBoard = () => {
         <img src={headlogo1} className="h-14 inline" alt="Leader Board Logo" />
       </div>
       <div className="subheading ">
-      At Oxyvan, we're committed to making the world a greener, healthier place for everyone. Our mission is simple: to plant trees that will produce oxygen, absorb carbon dioxide, and provide a cleaner, more sustainable environment for future generations. We believe that by working together, we can combat climate change and create a better planet for all.
+      At Oxyvan, we're committed to making the world a greener, healthier place for everyone. Our mission is simple: to plant trees that produces oxygen, absorb carbon dioxide, and provide a cleaner, more sustainable environment for future generations. We believe that by working together, we can combat climate change and create a better planet for all.
      
 <br />
         "Meet the champions of our cause! Whether through dedicated service or

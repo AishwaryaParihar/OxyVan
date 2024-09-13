@@ -8,8 +8,6 @@ const VolunteerRegistrationForm = () => {
     email: '',
     age: '',
     occupation: '',
-    areasOfInterest: [],
-    skills: [],
     availability: [],
     timeCommitment: '',
     reasonForVolunteering: '',
@@ -18,7 +16,7 @@ const VolunteerRegistrationForm = () => {
     trainingSession: '',
     adharCardImage: null,
     panCardImage: null,
-    signature: '',
+    note:'',
     date: '',
   });
 
@@ -130,8 +128,8 @@ const VolunteerRegistrationForm = () => {
           <label className="block text-green-700">Aadhar Card Image</label>
           <input
             type="file"
-            name="adharCardImage"
-            accept="image/*"
+            name="aadharImage"
+            // accept="image/*"
             onChange={handleChange}
             className="w-full p-2 border border-green-400 rounded"
           />
@@ -147,38 +145,19 @@ const VolunteerRegistrationForm = () => {
             className="w-full p-2 border border-green-400 rounded"
           />
         </div>
-
-
-        {/* Availability */}
-        <h2 className="text-xl font-semibold text-green-600 mb-4">Availability</h2>
-
         <div className="mb-4">
-          <label className="block text-green-700 mb-2">Availability (check all that apply):</label>
-          {['Weekdays', 'Weekends', 'Flexible'].map(availability => (
-            <label key={availability} className="block text-green-600">
-              <input
-                type="checkbox"
-                name="availability"
-                value={availability}
-                onChange={handleChange}
-              />  {" "} {availability}
-            </label>
-          ))}
+          <label className="block text-green-700">Passbook Image</label>
+          <input
+            type="file"
+            name="passbookImage"
+            accept="image/*"
+            onChange={handleChange}
+            className="w-full p-2 border border-green-400 rounded"
+          />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-green-700 mb-2">Time commitment (check one):</label>
-          {['Less than 5 hours/week', '5-10 hours/week', 'More than 10 hours/week'].map(commitment => (
-            <label key={commitment} className="block text-green-600 ">
-              <input
-                type="radio"
-                name="timeCommitment"
-                value={commitment}
-                onChange={handleChange}
-              /> {" "} {commitment}
-            </label>
-          ))}
-        </div>
+
+       
 
         {/* Additional Information */}
         <h2 className="text-xl font-semibold text-green-600 mb-4">Additional Information</h2>
@@ -253,23 +232,13 @@ const VolunteerRegistrationForm = () => {
         <h2 className="text-xl font-semibold text-green-600 mb-4">Declaration</h2>
 
        <div className="mb-4">
-        <input type="checkbox" />
+        <input type="checkbox" name="note"
+                value="note"
+                onChange={handleChange} />
        <label className="text-green-700 mb-4 ps-2">
           I confirm that I am volunteering my time and services without expectation of payment or compensation. I understand that I will be required to abide by the organization's policies and procedures.
         </label>
        </div>
-
-        <div className="mb-4">
-          <label className="block text-green-700">Date</label>
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-            className="w-full p-2 border border-green-400 rounded"
-          />
-        </div>
-
         <div className="text-center">
           <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
             Submit
