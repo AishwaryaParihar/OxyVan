@@ -7,12 +7,14 @@ import Testimonials from './Testimonials'
 import OurImpact from './OurImpact'
 import Mission from './Mission'
 import Demoo from './Demoo'
+import GiftorDonate from './GiftorDonate'
 const Home = () => {
   return (
     <div >
       <Hero/>
       <LeaderBoard/>
       <PlantType/>
+      <GiftorDonate/>
       <Mission/>
       <OurImpact/>
       <Testimonials/>

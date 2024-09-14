@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const VolunteerRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -8,17 +8,16 @@ const VolunteerRegistrationForm = () => {
     email: '',
     age: '',
     occupation: '',
-    availability: [],
-    timeCommitment: '',
-    reasonForVolunteering: '',
     priorExperience: '',
     priorExperienceDetails: '',
     trainingSession: '',
     adharCardImage: null,
     panCardImage: null,
-    note:'',
-    date: '',
+    passbookImage: null,
+    note: '',
   });
+
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -45,10 +44,37 @@ const VolunteerRegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Volunteer Registration Form submitted:', formData);
-    // Handle form submission logic here.
+    setSubmitted(true);
   };
 
+
+  useEffect(() => {
+    if (submitted) {
+      const submitData = async () => {
+        const data = new FormData();
+
+
+        Object.keys(formData).forEach((key) => {
+          if (key === 'availability') {
+            formData[key].forEach((item) => data.append(key, item));
+          } else {
+            data.append(key, formData[key]);
+          }
+        });
+
+    
+        const response = await fetch('http://localhost:8080/api/volunteers', {
+          method: 'POST',
+          body: data,
+        });
+
+        const result = await response.json();
+        console.log(result);
+      };
+
+      submitData();
+    }
+  }, [submitted]);
   return (
   
       <form onSubmit={handleSubmit}>

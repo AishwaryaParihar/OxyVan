@@ -1,27 +1,53 @@
 import React, { useState } from "react";
 import styles from "./ContactUs.module.css";
+import SummaryApi from "../../common/SummaryApi";
 
 const ContactUs = () => {
-  const[data, setData]=useState(
-    {
-      name:"",
-      number:"",
-      email:"",
-      msg:""
-    }
-  )
-   const handleOnChange=(e)=>{
-    const {name,value}=e.target;
+  const [data, setData] = useState({
+    name: "",
+    numberMobile: "",
+    email: "",
+    msg: ""
+  });
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
     setData({
       ...data,
-      [name]:value
-    })
-   }
-  
-   const handleSubmit=(e)=>{
-    e.preventDefault()
-    console.log("contact form data", data)
-   }
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+console.log("contact form data", data);
+    try {
+      const postData = await fetch(SummaryApi.contact.url, {
+        method: SummaryApi.contact.method,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+console.log(postData)
+      if (postData.ok) {
+        const result = await postData.json();
+        console.log("response",result);
+        alert("Submited succesfully")
+        // Reset the form data after successful submission
+        setData({
+          name: "",
+          numberMobile: "",
+          email: "",
+          msg: ""
+        });
+      } else {
+        console.log("Something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex flex-col lg:flex-row justify-center items-start lg:items-center lg:space-x-10 py-12 px-4 lg:px-16 contactbg bg-SeaBlue">
@@ -30,9 +56,7 @@ const ContactUs = () => {
         <h2 className="text-3xl font-bold text-green-700 mb-6">Contact Us</h2>
         <form className={`${styles.form} bg-white p-6 rounded-lg shadow-lg`} onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-green-800 font-semibold mb-2"
-       
-            >Name</label>
+            <label htmlFor="name" className="block text-green-800 font-semibold mb-2">Name</label>
             <input
               type="text"
               id="name"
@@ -44,14 +68,14 @@ const ContactUs = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="number" className="block text-green-800 font-semibold mb-2">Contact Number</label>
+            <label htmlFor="numberMobile" className="block text-green-800 font-semibold mb-2">Contact Number</label>
             <input
               type="tel"
-              id="number"
+              id="numberMobile"
               className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Your Number"
-              name="number"
-              value={data.number}
+              name="numberMobile"
+              value={data.numberMobile}
               onChange={handleOnChange}
             />
           </div>
@@ -68,7 +92,7 @@ const ContactUs = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="message" className="block text-green-800 font-semibold mb-2">Message</label>
+            <label htmlFor="msg" className="block text-green-800 font-semibold mb-2">Message</label>
             <textarea
               id="msg"
               className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -91,15 +115,15 @@ const ContactUs = () => {
       {/* Contact Details and Map Column */}
       <div className="lg:w-1/2 w-full">
         <h2 className="text-3xl font-bold text-green-700 mb-6">Our Location</h2>
-        <p className="text-green-800 mb-4">123 Green Road, Tree City, Earth</p>
-        <p className="text-green-800 mb-4">Phone: +123 456 7890</p>
-        <p className="text-green-800 mb-4">Email: contact@treeplantation.com</p>
+        <p className="text-green-800 mb-4">Timing: 9:30AM to 6:30PM</p>
+        <p className="text-green-800 mb-4">Office: 1/28, A Chhatrasal Nagar Phase-2, J.K. Road Bhopal (mp)</p>
+        <p className="text-green-800 mb-4">Phone: +91 9826499329</p>
+        <p className="text-green-800 mb-4">Email: oxyvan65@gmail.com</p>
         <div className={`${styles.map} w-full h-64 bg-green-100 mt-6 rounded-lg overflow-hidden`}>
-          {/* Embed a map using an iframe or any other preferred method */}
           <iframe
             className="w-full h-full"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509239!2d144.9537353153159!3d-37.81627977975133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727e0fbdcb092!2sVictoria%20State%20Library!5e0!3m2!1sen!2sin!4v1604984690996!5m2!1sen!2sin"
-            frameBorder="0"
+            // frameBorder="0"
             allowFullScreen=""
             aria-hidden="false"
             tabIndex="0"

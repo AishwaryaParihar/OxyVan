@@ -1,10 +1,10 @@
 const ContactModel = require("../models/contact");
 
 async function contactUsController(req, res) {
-    const { contact, name, email, msg } = req.body;
+    const {name, numberMobile,  email, msg } = req.body;
     try {
         const addContactDetails = new ContactModel({
-            contact,
+            numberMobile,
             name,
             email,
             msg

@@ -43,7 +43,7 @@ const ContactForm = () => {
                 <td className='p-2'>{index + 1}</td>
                 <td className='p-2'>{details.name}</td>
                 <td className='p-2'>{details.email}</td>
-                <td className='p-2'>{details.contact}</td>
+                <td className='p-2'>{details.numberMobile}</td>
                 <td className='p-2'>{details.msg}</td>
                 <td className='p-2'>{moment(details?.createdAt).format('LL')}</td>
               </tr>

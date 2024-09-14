@@ -19,4 +19,4 @@ async function getContactDetails(req, res){
      })
     }
 }
-module.exports=getContactDetails
+module.exports = getContactDetails
