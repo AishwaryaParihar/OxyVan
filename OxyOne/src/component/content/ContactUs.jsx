@@ -1,48 +1,48 @@
-import React, { useState } from "react";
-import styles from "./ContactUs.module.css";
-import SummaryApi from "../../common/SummaryApi";
+import React, { useState } from 'react';
+import styles from './ContactUs.module.css';
+import SummaryApi from '../../common/SummaryApi';
 
 const ContactUs = () => {
   const [data, setData] = useState({
-    name: "",
-    numberMobile: "",
-    email: "",
-    msg: ""
+    name: '',
+    numberMobile: '',
+    email: '',
+    msg: '',
   });
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData({
       ...data,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-console.log("contact form data", data);
+    console.log('contact form data', data);
     try {
       const postData = await fetch(SummaryApi.contact.url, {
         method: SummaryApi.contact.method,
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
-console.log(postData)
+      console.log(postData);
       if (postData.ok) {
         const result = await postData.json();
-        console.log("response",result);
-        alert("Submited succesfully")
+        console.log('response', result);
+        alert('Submited succesfully');
         // Reset the form data after successful submission
         setData({
-          name: "",
-          numberMobile: "",
-          email: "",
-          msg: ""
+          name: '',
+          numberMobile: '',
+          email: '',
+          msg: '',
         });
       } else {
-        console.log("Something went wrong");
+        console.log('Something went wrong');
       }
     } catch (error) {
       console.log(error);
@@ -54,9 +54,17 @@ console.log(postData)
       {/* Form Column */}
       <div className="lg:w-1/2 w-full mb-8 lg:mb-0">
         <h2 className="text-3xl font-bold text-green-700 mb-6">Contact Us</h2>
-        <form className={`${styles.form} bg-white p-6 rounded-lg shadow-lg`} onSubmit={handleSubmit}>
+        <form
+          className={`${styles.form} bg-white p-6 rounded-lg shadow-lg`}
+          onSubmit={handleSubmit}
+        >
           <div className="mb-4">
-            <label htmlFor="name" className="block text-green-800 font-semibold mb-2">Name</label>
+            <label
+              htmlFor="name"
+              className="block text-green-800 font-semibold mb-2"
+            >
+              Name
+            </label>
             <input
               type="text"
               id="name"
@@ -68,7 +76,12 @@ console.log(postData)
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="numberMobile" className="block text-green-800 font-semibold mb-2">Contact Number</label>
+            <label
+              htmlFor="numberMobile"
+              className="block text-green-800 font-semibold mb-2"
+            >
+              Contact Number
+            </label>
             <input
               type="tel"
               id="numberMobile"
@@ -80,7 +93,12 @@ console.log(postData)
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-green-800 font-semibold mb-2">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-green-800 font-semibold mb-2"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -92,7 +110,12 @@ console.log(postData)
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="msg" className="block text-green-800 font-semibold mb-2">Message</label>
+            <label
+              htmlFor="msg"
+              className="block text-green-800 font-semibold mb-2"
+            >
+              Message
+            </label>
             <textarea
               id="msg"
               className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -116,13 +139,17 @@ console.log(postData)
       <div className="lg:w-1/2 w-full">
         <h2 className="text-3xl font-bold text-green-700 mb-6">Our Location</h2>
         <p className="text-green-800 mb-4">Timing: 9:30AM to 6:30PM</p>
-        <p className="text-green-800 mb-4">Office: 1/28, A Chhatrasal Nagar Phase-2, J.K. Road Bhopal (mp)</p>
+        <p className="text-green-800 mb-4">
+          Office: 1/28, A Chhatrasal Nagar Phase-2, J.K. Road Bhopal (mp)
+        </p>
         <p className="text-green-800 mb-4">Phone: +91 9826499329</p>
         <p className="text-green-800 mb-4">Email: oxyvan65@gmail.com</p>
-        <div className={`${styles.map} w-full h-64 bg-green-100 mt-6 rounded-lg overflow-hidden`}>
+        <div
+          className={`${styles.map} w-full h-64 bg-green-100 mt-6 rounded-lg overflow-hidden`}
+        >
           <iframe
             className="w-full h-full"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509239!2d144.9537353153159!3d-37.81627977975133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf0727e0fbdcb092!2sVictoria%20State%20Library!5e0!3m2!1sen!2sin!4v1604984690996!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.4619735791034!2d77.46113960000001!3d23.2626578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c69fcecdc38ad%3A0xf4d757a800f01720!2sChhatrasal%20Nagar%20Phase-2%2C%20Bharat%20Nagar%2C%20Indrapuri%2C%20Bhopal%2C%20Madhya%20Pradesh%20462022!5e0!3m2!1sen!2sin!4v1726302488928!5m2!1sen!2sin"
             // frameBorder="0"
             allowFullScreen=""
             aria-hidden="false"

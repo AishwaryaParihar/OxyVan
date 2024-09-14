@@ -16,9 +16,10 @@ const Home = () => {
       <PlantType/>
       <GiftorDonate/>
       <Mission/>
+      
       <OurImpact/>
       <Testimonials/>
-      <Demoo age={14} name={'toshi'} pancard={false}/>
+      {/* <Demoo age={14} name={'toshi'} pancard={false}/> */}
     </div>
   )
 }
