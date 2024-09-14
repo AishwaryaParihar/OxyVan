@@ -118,7 +118,7 @@ const LeaderBoard = () => {
         <div className="leaderboard-left">
         <LeaderBoardCard
           title="Top Donors"
-          winnerName="Chhaya Singh"
+          winnerName="Name"
           items={donors}
           className="relative top-4 leaderboard-card"
         />
@@ -133,7 +133,7 @@ const LeaderBoard = () => {
        <div className="leaderboard-card">
        <LeaderBoardCard
           title="Top Volunteers"
-          winnerName="Aishwarya Parihar"
+          winnerName="Name"
           items={volunteers}
           className="relative top-4 "
         />

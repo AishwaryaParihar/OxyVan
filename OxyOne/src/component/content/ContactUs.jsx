@@ -80,7 +80,7 @@ const ContactUs = () => {
               htmlFor="numberMobile"
               className="block text-green-800 font-semibold mb-2"
             >
-              Contact Number
+              Whatsapp Number
             </label>
             <input
               type="tel"
