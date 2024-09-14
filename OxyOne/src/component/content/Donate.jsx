@@ -1,43 +1,91 @@
-import React from "react";
-import QRscan from "../../assets/upiQR.png";
-import donate01 from "../../assets/DONATE01.png";
-import donate02 from "../../assets/DONATE02.png";
-import donate03 from "../../assets/DONATE03.png";
-import donate04 from "../../assets/DONATE04.png";
+import React, { useState } from 'react';
+import VolunteerForm from './VolunteerForm';
+import DonerForm from './DonerForm';
+import headlogo1 from '../../assets/flower-pot.png';
+import TreeDonate from './TreeDonate';
 
-const Donate = () => {
+const Register = () => {
+  const [formType, setFormType] = useState('tree');
+
+  const handleButtonClick = (type) => {
+    setFormType(type);
+  };
+
   return (
-    <div className="flex flex-col lg:flex-row my-28 lg:justify-center lg:items-center mx-4 lg:mx-40  shadow-2xl shadow-lime-500">
-      {/* 2nd Item (Moves to the bottom on smaller screens) */}
-      <div className="shadow-2xl bg-primary lg:w-[30%] order-2 lg:order-none text-white font-semibold p-5 py-12 flex flex-col justify-center">
-        <div className="text-center mb-12 text-3xl lg:text-4xl underline">
-          Bank<span className="text-secondary">ing det</span>ails
+    <>
+      <div className="w-full mt-20 px-12">
+        <div className="flex justify-center">
+          <h2 className="heading01 font-bold mb-8 md:text-3xl">
+            {' '}
+            Donate What Your ❤️ Want{' '}
+          </h2>
+
+          <img src={headlogo1} className="h-14 inline" alt="" />
         </div>
-        <div className="my-4 text-lg lg:text-xl">
-          <span className="text-secondary">Bank Name:</span> SBI (State Bank Of India)
-        </div>
-        <div className="my-4 text-lg lg:text-xl">
-          <span className="text-secondary">Account name:</span> OXYVAN PARYAWARAN SANRAKSHAN SAMITI
-        </div>
-        <div className="my-4 text-lg lg:text-xl"><span className="text-secondary">Account No.:</span> 00000043097813492</div>
-        <div className="my-4 text-lg lg:text-xl"><span className="text-secondary">IFSC Code:</span> SBIN0001308</div>
-        <div className="my-4 text-lg lg:text-xl">
-          <span className="text-secondary">Branch:</span> Main Branch New Market Bhopal, M.P.
+        <div className="flex gap-4">
+          <div className="w-1/3">
+            <button
+              className={`w-full py-2 font-semibold ${
+                formType === 'tree' ? 'bg-primary' : 'bg-green-700'
+              } text-white`}
+              onClick={() => handleButtonClick('money')}
+            >
+              Donate Money
+            </button>                                                                                
+          </div>
+          <div className="w-1/3">
+            <button
+              className={`w-full py-2 font-semibold ${
+                formType === 'land' ? 'bg-primary' : 'bg-green-700'
+              } text-white`}
+              onClick={() => handleButtonClick('tree')}
+            >
+              Donate Tree
+            </button>
+          </div>
+          <div className="w-1/3">
+            <button
+              className={`w-full py-2 font-semibold ${
+                formType === 'money' ? 'bg-primary' : 'bg-green-700'
+              } text-white`}
+              onClick={() => handleButtonClick('land')}
+            >
+              Donate Land
+            </button>
+          </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-3 gap-4">
-          <img src={donate01} className="h-16 lg:h-20 mx-auto" alt="Donate 01" />
-          <img src={donate02} className="h-16 lg:h-20 mx-auto" alt="Donate 02" />
-          <img src={donate04} className="h-16 lg:h-20 mx-auto" alt="Donate 04" />
+        <div className="mt-8">
+          {formType === 'money' && (
+            <div className="rounded-lg shadow-md">
+              {/* Tree donation form */}
+              <TreeDonate />
+            </div>
+          )}
+
+          {formType === 'land' && (
+            <div className="p-6 contactbg rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-4 text-green-800">
+                Land Donation Form
+              </h3>
+              {/* Land donation form */}
+              <DonerForm />
+            </div>
+          )}
+
+          {formType === 'money' && (
+            <div className="p-6 contactbg rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-4 text-green-800">
+                Money Donation Form
+              </h3>
+              {/* Money donation form */}
+              <DonerForm />
+            </div>
+          )}
         </div>
       </div>
-
-      {/* 3rd Item (Moves to the top on smaller screens) */}
-      <div className="lg:w-[40%] order-1 lg:order-none p-4 lg:p-0">
-        <img className="w-full h-auto" src={QRscan} alt="QR Code Scan" />
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Donate;
+export default Register;
