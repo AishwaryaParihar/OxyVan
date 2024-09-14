@@ -4,6 +4,7 @@ import DonerForm from './DonerForm';
 import headlogo1 from '../../assets/flower-pot.png';
 import TreeDonate from './TreeDonate';
 import MoneyDonate from './MoneyDonate';
+import LandDonate from './LandDonate';
 
 const Register = () => {
   const [formType, setFormType] = useState('tree');
@@ -73,12 +74,10 @@ const Register = () => {
           )}
 
           {formType === 'land' && (
-            <div className="p-6 contactbg rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4 text-green-800">
-                Money Donation Form
-              </h3>
+            <div className=" rounded-lg shadow-md">
+
               {/* Money donation form */}
-              <DonerForm />
+          <LandDonate/>
             </div>
           )}
         </div>

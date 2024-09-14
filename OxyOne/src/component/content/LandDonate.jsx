@@ -1,16 +1,14 @@
 import React from 'react'
 import DonateOptions from './DonateOptionS.JSX'
 
-
-const TreeDonate = () => {
+const LandDonate = () => {
   return (
     <div>
-
-<DonateOptions heading="Donate Tree"/>
+<DonateOptions heading="Land Donate"/>
 
 
     </div>
   )
 }
 
-export default TreeDonate
+export default LandDonate
