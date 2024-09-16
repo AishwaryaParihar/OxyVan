@@ -9,6 +9,8 @@ import Mission from './Mission'
 import Demoo from './Demoo'
 import GiftorDonate from './GiftorDonate'
 import TreePlantingInfo from './WhyDonate'
+import StepsDonation from './StepsDonation'
+import StepsSpent from './StepsSpent'
 const Home = () => {
   return (
     <div >
@@ -16,6 +18,8 @@ const Home = () => {
       <LeaderBoard/>
       <TreePlantingInfo/>
       <GiftorDonate/>
+      <StepsDonation/>
+      <StepsSpent/>
       <PlantType/>
       <Mission/> 
       <OurImpact/>
