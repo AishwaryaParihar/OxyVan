@@ -25,11 +25,11 @@ const DonateOptions = ({ heading, onSubmit }) => {
 
   return (
     <div className="p-6 bg-gray-100 rounded-lg shadow-md">
-      <h3 className="text-xl font-semibold mb-4">{heading}</h3>
+      <h3 className="text-2xl font-semibold mb-4 text-lime-700">{heading}:</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 mb-2" htmlFor="name">
-            Name
+            Name : 
           </label>
           <input
             type="text"
@@ -44,7 +44,7 @@ const DonateOptions = ({ heading, onSubmit }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 mb-2" htmlFor="email">
-            Email
+            Email :
           </label>
           <input
             type="email"
@@ -59,7 +59,7 @@ const DonateOptions = ({ heading, onSubmit }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 mb-2" htmlFor="number">
-            Phone Number
+          Whatsapp Number :
           </label>
           <input
             type="tel"

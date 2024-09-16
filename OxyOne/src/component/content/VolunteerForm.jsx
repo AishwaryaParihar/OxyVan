@@ -104,7 +104,7 @@ const VolunteerRegistrationForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block text-green-700">Phone Number</label>
+          <label className="block text-green-700">Whatsapp Number</label>
           <input
             type="tel"
             name="phoneNumber"

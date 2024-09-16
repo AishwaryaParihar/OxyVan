@@ -384,7 +384,7 @@ const DonorForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       {/* Donor Information */}
-      <div className="mb-4">
+      <div className="mb-4 ">
         <label className="block text-green-700">Name</label>
         <input
           type="text"
@@ -394,8 +394,8 @@ const DonorForm = () => {
           className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
         />
       </div>
-      <div className="mb-4">
-        <label className="block text-green-700">Phone Number</label>
+      <div className="mb-4 ">
+        <label className="block text-green-700">Whatsapp Number</label>
         <input
           type="tel"
           name="phone"
@@ -416,7 +416,7 @@ const DonorForm = () => {
       </div>
 
       {/* PAN Card Upload */}
-      <div className="mb-4">
+      <div className="mb-4 ">
         <label className="block text-green-700">Upload PAN Card</label>
         <input
           type="file"

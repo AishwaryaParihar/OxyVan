@@ -5,13 +5,53 @@ import headlogo1 from '../../assets/flower-pot.png';
 import TreeDonate from './TreeDonate';
 import MoneyDonate from './MoneyDonate';
 import LandDonate from './LandDonate';
+import { PiTreeLight } from "react-icons/pi";
+// import { GiReceiveMoney } from "react-icons/gi";
+import { LiaDonateSolid } from "react-icons/lia";
+import { PiIslandLight } from "react-icons/pi";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+
 
 const Register = () => {
-  const [formType, setFormType] = useState('tree');
+
+  useGSAP(()=>{
+    gsap.fromTo(
+    '.tabs',
+        { y: -50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+          stagger: 0.2,
+          ease: 'power2.out',
+        }
+      );
+    }, []);
+
+
+
+    // useEffect(() => {
+    //   gsap.fromTo(
+    //     '.intro-text',
+    //     { y: 50, opacity: 0 },
+    //     {
+    //       y: 0,
+    //       opacity: 1,
+    //       duration: 1.5,
+    //       ease: 'power2.out',
+    //     }
+    //   );
+    // }, []);
+
+
+  const [formType, setFormType] = useState('money');
 
   const handleButtonClick = (type) => {
     setFormType(type);
   };
+
+  
 
   return (
     <>
@@ -24,35 +64,35 @@ const Register = () => {
 
           <img src={headlogo1} className="h-14 inline" alt="" />
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 mx-10 mt-6">
           <div className="w-1/3">
             <button
-              className={`w-full py-2 font-semibold ${
+              className={`tabs w-full py-6 text-2xl rounded-lg font-semibold ${
                 formType === 'money' ? 'bg-primary' : 'bg-green-700'
               } text-white`}
               onClick={() => handleButtonClick('money')}
             >
-              Donate Money
+              Donate Money <LiaDonateSolid  className='inline sm:text-6xl text-2xl' />
             </button>                                                                                
           </div>
           <div className="w-1/3">
             <button
-              className={`w-full py-2 font-semibold ${
+              className={` tabs w-full py-6 text-2xl rounded-lg font-semibold ${
                 formType === 'tree' ? 'bg-primary' : 'bg-green-700'
               } text-white`}
               onClick={() => handleButtonClick('tree')}
             >
-              Donate Tree
+              Donate Tree < PiTreeLight className='inline sm:text-6xl text-2xl' />
             </button>
           </div>
           <div className="w-1/3">
             <button
-              className={`w-full py-2 font-semibold ${
+              className={`tabs w-full py-6 text-2xl rounded-lg font-semibold ${
                 formType === 'land' ? 'bg-primary' : 'bg-green-700'
               } text-white`}
               onClick={() => handleButtonClick('land')}
             >
-              Donate Land
+              Donate Land < PiIslandLight className='inline sm:text-6xl text-2xl' />
             </button>
           </div>
         </div>
