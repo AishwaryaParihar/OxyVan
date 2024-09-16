@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8070";
+const backendDomain = "http://localhost:8080";
 
 const SummaryApi = {
   signUp: {
@@ -8,6 +8,13 @@ const SummaryApi = {
   contactAll: {
     url: `${backendDomain}/api/get-contact`,
     method: "get",
+  },
+  donorAll: {
+    url: `${backendDomain}/api/doner-get`,
+    method: "get",
+  },
+  imgURL:{
+    url:`${backendDomain}/files`
   }
 }
 

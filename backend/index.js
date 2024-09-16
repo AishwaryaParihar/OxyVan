@@ -18,6 +18,7 @@ app.use(
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(cookieparser()); // Middleware to parse cookies
 app.use(express.urlencoded({ extended: false })); // Middleware to parse URL-encoded bodies
+app.use('/files',express.static('files'))
 
 app.get('/', (req, res) => {
   res.send('Server is running!');
@@ -32,7 +33,7 @@ const upload = multer({ dest: './files' });
 
 app.use('/api', router);
 
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 8080;
 
 connectDB()
   .then(() => {

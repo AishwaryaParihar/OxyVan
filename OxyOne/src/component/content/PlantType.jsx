@@ -46,7 +46,7 @@ const PlantType = () => {
           trigger: ".plant-text",
           start: "top 80%",
           end: "bottom 60%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
       }
     );

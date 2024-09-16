@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import headlogo1 from '../../assets/flower-pot.png';
 import img1 from '../../assets/spent1.svg';
 import img2 from '../../assets/spent2.svg';
@@ -6,6 +8,8 @@ import img3 from '../../assets/spent3.svg';
 import img4 from '../../assets/spent4.svg';
 import img5 from '../../assets/spent5.svg';
 import img6 from '../../assets/donate6.svg';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
   { img: img1, title: 'Average cost of sapling', highlight: 'sapling', price: '24' },
@@ -16,6 +20,28 @@ const steps = [
 ];
 
 const StepsSpent = () => {
+  const stepRefs = useRef([]);
+
+  useEffect(() => {
+
+    gsap.fromTo(
+      stepRefs.current,
+      { opacity: 0, y: 50 },  
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,  
+        scrollTrigger: {
+          trigger: stepRefs.current,
+          start: 'top 80%',
+          end: 'bottom 60%',
+          toggleActions: 'play none none reverse',
+        },
+      }
+    );
+  }, []);
+
   return (
     <div className="px-4 py-8 md:px-14">
       {/* Header Section */}
@@ -24,10 +50,14 @@ const StepsSpent = () => {
         <img src={headlogo1} className="h-12" alt="Donation" />
       </div>
 
-      {/* Responsive Grid for Images and Steps */}
+      {/*  Images and Steps */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
         {steps.map((step, index) => (
-          <div key={index} className="flex flex-col justify-between text-center h-full bg-white border-b-4 border-green-500 shadow-md rounded-lg p-4">
+          <div
+            key={index}
+            ref={(el) => (stepRefs.current[index] = el)}  
+            className="flex flex-col justify-between text-center "
+          >
             {/* Image and Title */}
             <div>
               <img
@@ -37,12 +67,11 @@ const StepsSpent = () => {
               />
               <h6 className="text-lg text-gray-700">
                 {step.title.split(step.highlight)[0]}
-                <span className="text-green-600 font-bold">{step.highlight}</span>
+                <span className="text-green-700 font-bold">{step.highlight}</span>
                 {step.title.split(step.highlight)[1]}
               </h6>
             </div>
 
-            {/* Button at the Bottom */}
             <div className="mt-4">
               <button className="border-black border rounded-md p-1 px-8 font-bold">
                 ₹ {step.price}

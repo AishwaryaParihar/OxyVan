@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8070";
+const backendDomain = "http://localhost:8080";
 
 const SummaryApi = {
   contact: {
