@@ -38,11 +38,6 @@ const TreePlantingInfo = () => {
           />
         </div>
       </div>
-      
-      <p className="text-lg mb-6">
-        Because of these reasons, tree planting is a very important and beneficial activity. It’s not only good for the environment, but also for our health and the future.
-      </p>
-      
       <p className="text-lg mb-6">
         People want their surroundings to be green, filled with trees and plants, and to have a clean environment. The government also wants more trees and spends millions of rupees to protect the environment from pollution. Every year, organizations issue tenders worth millions for tree plantation. However, while trees are planted, they often don't survive due to a lack of care, leading to significant financial loss.
       </p>
