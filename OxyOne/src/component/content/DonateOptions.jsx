@@ -24,7 +24,7 @@ const DonateOptions = ({ heading, onSubmit }) => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 rounded-lg shadow-md">
+    <div className="p-6 bg-gray-100  rounded-lg shadow-md">
       <h3 className="text-2xl font-semibold mb-4 text-lime-700">{heading}:</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
