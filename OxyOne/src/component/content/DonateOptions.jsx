@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from 'react';
 
 const DonateOptions = ({ heading, onSubmit }) => {
@@ -20,7 +17,7 @@ const DonateOptions = ({ heading, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);  // Pass form data to the parent component when the form is submitted
+    onSubmit(formData); // Pass form data to the parent component when the form is submitted
   };
 
   return (
@@ -29,7 +26,7 @@ const DonateOptions = ({ heading, onSubmit }) => {
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 mb-2" htmlFor="name">
-            Name : 
+            Name :
           </label>
           <input
             type="text"
@@ -59,7 +56,7 @@ const DonateOptions = ({ heading, onSubmit }) => {
 
         <div className="mb-4">
           <label className="block text-gray-700 mb-2" htmlFor="number">
-          Whatsapp Number :
+            Whatsapp Number :
           </label>
           <input
             type="tel"

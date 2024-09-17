@@ -1,7 +1,7 @@
 import React from "react";
 import impact01 from "../../assets/impact01.png";
 import impact02 from "../../assets/impact02.png";
-import impact03 from "../../assets/impact03.png";
+import impact05 from "../../assets/impact05.webp";
 import impact04 from "../../assets/impact04.png";
 import headlogo1 from "../../assets/flower-pot.png";
 // import headlogo2 from "../../assets/plant (1).png"
@@ -23,7 +23,7 @@ const OurImpact = () => {
     {
       title: "Improving Air Quality",
       text: "Trees act as natural air filters, absorbing pollutants and releasing clean oxygen, making the air we breathe fresher and healthier.",
-      image: impact03
+      image: impact05
     },
     {
       title: "Empowering Communities",
@@ -43,7 +43,7 @@ const OurImpact = () => {
       <div className="flex justify-center">
         <div className="heading01"> {impactdicription.title} </div>
 
-        <img src={headlogo1} className="h-14 inline" alt="" />
+        <img src={headlogo1} className="h-14 inline p-32" alt="" />
       </div>
       <div className="subheading mr-8"> {impactdicription.subtitle}  </div>
 
