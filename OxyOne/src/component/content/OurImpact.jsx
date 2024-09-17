@@ -43,7 +43,7 @@ const OurImpact = () => {
       <div className="flex justify-center">
         <div className="heading01"> {impactdicription.title} </div>
 
-        <img src={headlogo1} className="h-14 inline p-32" alt="" />
+        <img src={headlogo1} className="h-14 inline" alt="" />
       </div>
       <div className="subheading mr-8"> {impactdicription.subtitle}  </div>
 
