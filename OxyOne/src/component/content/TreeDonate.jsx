@@ -1,10 +1,12 @@
 import React from 'react'
-import DonateOptions from './DonateOptionS.JSX'
+import DonateOptions from './DonateOptions.jsx'
 
 
 const TreeDonate = () => {
   return (
     <div>
+
+{/* <DonateOptions heading="Donate Tree"/> */}
 
 <DonateOptions heading="Donate Tree"/>
 
