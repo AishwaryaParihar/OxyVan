@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import headlogo1 from "../../assets/flower-pot.png";
-import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Voluanteer = () => {
-  useGSAP(() => {
+  useEffect(() => {
     gsap.fromTo(
-      '.voluanteer-steps',
-      { y: -60, opacity: 0 },
+      ".voluanteer-steps",
+      { y: 100, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1.5,
-        stagger: 0.2,
+        duration: 1,
+        ease: "power2.out",
+        stagger: 0.3,
         delay: 1,
-        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: ".plant-text",
+          start: "top 80%",
+          end: "bottom 60%",
+          toggleActions: "play none none reverse",
+        },
       }
     );
   }, []);
@@ -30,9 +38,9 @@ const Voluanteer = () => {
       {/* Balls Section with Steps */}
       <div className="flex flex-col items-center justify-center px-7 relative">
         <div className="flex flex-wrap justify-between ">
-          
+
           {/* Option 1 */}
-          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-100 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 voluanteer-steps">
+          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-100 rounded-full shadow-lg transition-transform duration-300 transform voluanteer-steps">
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 1</div>
             <div className="text-3xl mb-2">🌳</div>
             <h2 className="text-lg font-bold text-blue-600">First Plantation</h2>
@@ -41,7 +49,7 @@ const Voluanteer = () => {
           </div>
 
           {/* Option 2 */}
-          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-200 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 voluanteer-steps">
+          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-200 rounded-full shadow-lg transition-transform duration-300 transform voluanteer-steps">
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 2</div>
             <div className="text-3xl mb-2">📅</div>
             <h2 className="text-lg font-bold text-blue-600">First Six Months</h2>
@@ -50,7 +58,7 @@ const Voluanteer = () => {
           </div>
 
           {/* Option 3 */}
-          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-300 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 voluanteer-steps">
+          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-300 rounded-full shadow-lg transition-transform duration-300 transform voluanteer-steps">
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 3</div>
             <div className="text-3xl mb-2">🎉</div>
             <h2 className="text-lg font-bold text-purple-600">Annual Plantation Date</h2>
@@ -59,7 +67,7 @@ const Voluanteer = () => {
           </div>
 
           {/* Option 4 */}
-          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-400 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 voluanteer-steps">
+          <div className="step-ball flex flex-col items-center justify-center m-4 w-64 h-64 bg-green-400 rounded-full shadow-lg transition-transform duration-300 transform voluanteer-steps">
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 4</div>
             <div className="text-3xl mb-2">📆</div>
             <h2 className="text-lg font-bold text-purple-600">Maximum Duration</h2>
@@ -68,8 +76,6 @@ const Voluanteer = () => {
           </div>
 
         </div>
-
-     
       </div>
     </>
   );
