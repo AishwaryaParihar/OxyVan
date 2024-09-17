@@ -17,8 +17,8 @@ const Register = () => {
 
   useGSAP(()=>{
     gsap.fromTo(
-    '.tabs',
-        { y: -50, opacity: 0 },
+    '.tabs,.heading-donate',
+        { y: -40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -57,7 +57,7 @@ const Register = () => {
     <>
       <div className="w-full mt-32 px-12">
         <div className="flex justify-center">
-          <h2 className="heading01 font-bold mb-8 md:text-3xl">
+          <h2 className="heading01 font-bold mb-8 md:text-3xl heading-donate">
             {' '}
             Donate What Your ❤️ Want{' '}
           </h2>

@@ -6,8 +6,26 @@ import donate03 from '../../assets/DONATE03.png';
 import donate04 from '../../assets/DONATE04.png';
 import tree from '../../assets/tree.webp';
 import { LuPalmtree } from 'react-icons/lu';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const MoneyDonate = () => {
+
+  useGSAP(()=>{
+    gsap.fromTo(
+    '.trees-tab',
+        { y: 70, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.5,
+          stagger: 0.2,
+          ease: 'power2.out',
+        }
+      );
+    }, []);
+
+
   const [hoveredIndex, setHoveredIndex] = useState(0); // Default the first item to be "hovered"
 
   const items = [
