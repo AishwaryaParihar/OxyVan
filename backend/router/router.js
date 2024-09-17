@@ -7,6 +7,7 @@ const getContactDetails = require('../controller/contactGet');
 const router = express.Router();
 const multer = require('multer');
 const { default: mongoose } = require('mongoose');
+const getDonnerController = require('../controller/donorGet');
 // const signInController = require('../controllers/SignInController');
 
 // storage
@@ -44,12 +45,14 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
       name,
       phone,
       email,
-      panCard: filename.path,
+      panCard: filename,
     });
     res.send({ status: 'ok' });
   } catch (error) {
     res.json({ status: error });
   }
 });
+
+router.get("/doner-get", getDonnerController)
 
 module.exports = router;
