@@ -10,6 +10,7 @@ import Register from "../component/content/Register";
 import Certificates from "../component/content/Certificates";
 import Privacy from "../component/content/Privacy";
 import TermsConditions from "../component/content/TermsConditions";
+import Research from "../component/content/Research";
 
 export const router = createBrowserRouter([
     
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
             {
                 path: "about",
                 element: <About/>
+            },
+            {
+                path: "research",
+                element: <Research/>
             },
             {
                 path: "gallery",

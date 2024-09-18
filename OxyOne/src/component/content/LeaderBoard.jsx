@@ -99,7 +99,7 @@ const LeaderBoard = () => {
   }, []);
 
   return (
-    <div className="w-full mx-auto mt-3 p-4 px-8 heading">
+    <div className="w-full mx-auto mt-3 p-4 px-4 lg:px-16 heading">
       <div className="flex justify-center ">
         <div className="heading01">Oxyvan</div>
         <img src={headlogo1} className="h-14 inline" alt="Leader Board Logo" />

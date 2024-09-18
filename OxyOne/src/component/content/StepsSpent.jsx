@@ -43,7 +43,7 @@ const StepsSpent = () => {
   }, []);
 
   return (
-    <div className="px-4 py-8 md:px-14">
+    <div className="px-4 py-8 lg:px-16">
       {/* Header Section */}
       <div className="flex justify-center items-center mb-8">
         <h2 className="heading01">How is it Spent?</h2>

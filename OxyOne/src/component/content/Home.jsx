@@ -12,6 +12,7 @@ import TreePlantingInfo from './WhyDonate'
 import StepsDonation from './StepsDonation'
 import StepsSpent from './StepsSpent'
 import Voluanteer from './Voluanteer'
+
 const Home = () => {
   return (
     <div >
