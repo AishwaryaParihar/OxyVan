@@ -11,7 +11,7 @@ const Research = () => {
     <div className="flex flex-col justify-center items-center px-4 lg:px-16 min-h-screen mt-12">
 
 
-      <div className="mt-8 bg-white  md:p-8 rounded-lg border-t-4 border-green-600 w-full">
+      <div className="mt-8 bg-white  md:p-4 rounded-lg border-t-4 border-green-600 w-full">
         {/* Flex container for the image and the content */}
         <div className="flex flex-col lg:flex-row lg:items-start mb-6">
           <div className="lg:w-1/2">
