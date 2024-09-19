@@ -11,13 +11,13 @@ const Research = () => {
     <div className="flex flex-col justify-center items-center px-4 lg:px-16 min-h-screen mt-12">
 
 
-      <div className="mt-8 bg-white  md:p-4 rounded-lg border-t-4 border-green-600 w-full">
+      <div className="mt-8 bg-white  p-2 md:p-8 rounded-lg border-t-4 border-green-600 w-full">
         {/* Flex container for the image and the content */}
         <div className="flex flex-col lg:flex-row lg:items-start mb-6">
           <div className="lg:w-1/2">
           <h1 className="text-2xl font-semibold text-green-700 mb-2 animate-title">Oxygen Crisis: Importance of Trees</h1>
             <p className="text-lg mb-4 animate-info">
-              **Oxygen**: Amid the second wave of COVID-19 in India, hospitals are facing a shortage of beds and oxygen. 
+              Oxygen: Amid the second wave of COVID-19 in India, hospitals are facing a shortage of beds and oxygen. 
               Experts say that if more trees had been planted, the country wouldn't have experienced such a severe oxygen shortage. 
               The natural resources we had were not utilized efficiently, and widespread deforestation has led to today’s oxygen crisis.
             </p>

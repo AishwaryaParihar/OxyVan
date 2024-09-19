@@ -1,64 +1,67 @@
-const volunteerModel = require("../models/volunteer");
-const multer = require('multer');
+const volunteerModel = require('../models/volunteer');
 
-// Multer storage configuration
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname); // Add timestamp for unique filenames
-  }
-});
+const volunteerDetails = async (req, res) => {
+  const {
+    name,
+    address,
+    phoneNumber,
+    email,
+    age,
+    occupation,
+    reasonForVolunteering,
+    priorExperience,
+    trainingSession,
+    note,
+  } = req.body;
 
-// Configure multer to handle the specific fields
-const upload = multer({ storage }).fields([
-  { name: 'aadharImage', maxCount: 1 },
-  { name: 'panImage', maxCount: 1 }
-]);
+  // Access the uploaded files from req.files
+  const panCardImage = req.files['panCardImage']
+    ? req.files['panCardImage'][0].filename
+    : null;
+  const aadharImage = req.files['aadharImage']
+    ? req.files['aadharImage'][0].filename
+    : null;
+  const passbookImage = req.files['passbookImage']
+    ? req.files['passbookImage'][0].filename
+    : null;
 
-async function volunteerDetailsController(req, res) {
+  console.log('bodyyy', req.body); // Debug to check file and body content
+  console.log(req.files);
   try {
-    console.log("Files received:", req.files);  // Log files
-    console.log("Body received:", req.body);    // Log body
+    // Create the volunteer record in the database
+    await volunteerModel.create({
+      name,
+      address,
+      phoneNumber,
+      email,
+      age,
+      occupation,
+      reasonForVolunteering,
+      priorExperience,
+      trainingSession,
+      note,
+      panCardImage,
+      aadharImage,
+      passbookImage,
+    });
 
-    if (!req.files || !req.files.aadharImage || !req.files.panImage) {
-      return res.status(400).json({
-        message: "Missing required file(s)",
-        success: false,
-        error: true
+    res
+      .status(201)
+      .json({
+        message: 'Volunteer details saved successfully',
+        success: true,
+        error: false,
       });
-    }
-
-    const volunteerData = req.body;
-
-    const newVolunteer = new volunteerModel({
-      ...volunteerData,
-      aadharCardImage: req.files.aadharImage[0].filename,  // Accessing file names
-      panCardImage: req.files.panImage[0].filename
-    });
-
-    await newVolunteer.save();
-    console.log("tttttttttttttt")
-    res.status(200).json({
-      message: "Form submitted successfully",
-      success: true,
-      error: false,
-      data: newVolunteer
-    });
-  
-
   } catch (err) {
-    console.log("Error:", err.message);
-    res.status(500).json({
-      message: "Details submitting failed",
-      success: false,
-      error: true
-    });
+    console.log('error', err);
+    res
+      .status(500)
+      .json({
+        message: 'Error saving volunteer details',
+        success: false,
+        error: false,
+      });
   }
-}
-
-module.exports = {
-  volunteerDetailsController,
-  upload // Exporting the multer middleware to use in routes
 };
+
+module.exports = volunteerDetails;

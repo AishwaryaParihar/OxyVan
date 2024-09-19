@@ -8,6 +8,7 @@ const router = express.Router();
 const multer = require('multer');
 const { default: mongoose } = require('mongoose');
 const getDonnerController = require('../controller/donorGet');
+const volunteerDetails = require('../controller/volunteerDetails');
 // const signInController = require('../controllers/SignInController');
 
 // storage
@@ -54,5 +55,13 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
 });
 
 router.get("/doner-get", getDonnerController)
+
+// voluntieer post 
+router.post('/volunteers', upload.fields([
+  { name: 'aadharImage', maxCount: 1 },
+  { name: 'panCardImage', maxCount: 1 },
+  { name: 'passbookImage', maxCount: 1 },
+]), volunteerDetails);
+
 
 module.exports = router;

@@ -37,7 +37,7 @@ const MoneyDonate = () => {
 
   return (
     <>
-      <div className="shadow-2xl shadow-lime-500 mx-10 mt-20">
+      <div className="shadow-2xl shadow-lime-500 md:mx-10 mt-20">
         <div className="rounded mx-4 md:mx-16 my-6">
           <div className="text-center text-xl md:text-2xl mt-8 underline">
             How Much You Want To Donate
