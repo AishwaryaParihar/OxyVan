@@ -1,3 +1,4 @@
+
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
@@ -6,6 +7,8 @@ import Samples from "../component/Samples";
 import SinghIn from "../pages/SinghIn";
 import SideBar from "../component/SideBar";
 import ContactForm from "../component/ContactForm";
+import UserRecord from "../component/UserRecord";
+import UserRecordForm from "../component/UserRecordForm";
 
 
 export const routeradmin = createBrowserRouter([
@@ -28,6 +31,14 @@ export const routeradmin = createBrowserRouter([
             {
               path: "samples",
               element: <Samples />,
+            },
+            {
+              path: "userRecord",
+              element: <UserRecord/>,
+            },
+            {
+              path: "userRecordForm",
+              element: <UserRecordForm/>,
             },
           ],
         },

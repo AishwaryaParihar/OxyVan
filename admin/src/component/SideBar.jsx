@@ -1,16 +1,13 @@
-
-
-
 // import React, { useEffect } from "react";
 // import { Link, Outlet } from "react-router-dom";
 // import { RiAdminFill } from "react-icons/ri";
 
-import React from "react";
-import { RiAdminFill } from "react-icons/ri";
+import React from 'react';
+import { RiAdminFill } from 'react-icons/ri';
 
-import "../App.css";
-import { Link, Outlet } from "react-router-dom";
-import Heading from "./Heading";
+import '../App.css';
+import { Link, Outlet } from 'react-router-dom';
+import Heading from './Heading';
 
 const SideBar = () => {
   return (
@@ -28,16 +25,28 @@ const SideBar = () => {
           <div>
             <nav className="grid p-4">
               <Link
-                to={"contactForm"}
+                to={'contactForm'}
                 className="px-2 py-1 hover:bg-slate-100 hover:text-black font-semibold hover:font-semibold"
               >
                 Contact Details
               </Link>
               <Link
-                to={"samples"}
+                to={'samples'}
                 className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
               >
                 samples
+              </Link>
+              <Link
+                to={'userRecordForm'}
+                className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
+              >
+                User Record Form
+              </Link>
+              <Link
+                to={'userRecord'}
+                className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
+              >
+                User Record
               </Link>
             </nav>
           </div>
@@ -45,10 +54,10 @@ const SideBar = () => {
 
         <main className="w-full h-full p-2">
           <div className="mb-16">
-            {" "}
-      <Heading/>
+            {' '}
+            <Heading />
           </div>
-          <Outlet/>
+          <Outlet />
         </main>
       </div>
     </>

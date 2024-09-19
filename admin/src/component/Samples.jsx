@@ -3,7 +3,7 @@ import { useState } from 'react';
 import moment from 'moment';
 import SummaryApi from '../common/SummaryApi';
 import { useEffect } from 'react';
-const FILE_URL = process.env.fileURL
+
 
 const Samples = () => {
   const [donorData, setdonorData] = useState([]);
@@ -50,7 +50,7 @@ const Samples = () => {
               <td className="p-2">{detail.phone}</td>
               <td className="p-2">
                 <img
-                  src={`${FILE_URL}/files/${detail.panCard}`}
+                  src={`http://localhost:8080/files/${detail.panCard}`}
                   alt=""
                   className="w-20"
                 />
