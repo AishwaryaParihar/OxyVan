@@ -34,6 +34,14 @@ const SummaryApi = {
     url: `${backendDomain}/api/delete-volunteer/:id`,
     method: "delete",
   },
+  putUserRecordDetails: {
+    url: `${backendDomain}/api/putUserRecord/:id`,
+    method: "put",
+  },
+  deleteUserRecordDetails: {
+    url: `${backendDomain}/api/delete-userRecord/:id`,
+    method: "delete",
+  },
 }
 
 export default SummaryApi;
