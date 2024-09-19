@@ -15,8 +15,6 @@ const {
   updateVolunteer,
   deleteVolunteer,
 } = require('../controller/getVolunteer');
-// const getVolunteer = require('../controller/getVolunteer');
-// const signInController = require('../controllers/SignInController');
 
 // storage
 const storage = multer.diskStorage({
