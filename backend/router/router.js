@@ -6,7 +6,7 @@ const getContactDetails = require('../controller/contactGet');
 const router = express.Router();
 const multer = require('multer');
 const { default: mongoose } = require('mongoose');
-const getDonnerController = require('../controller/donorGet');
+// const getDonnerController = require('../controller/donorGet');
 const volunteerDetails = require('../controller/volunteerDetails');
 const getUserRecord = require('../controller/UserRecordController');
 const postUserRecord = require('../controller/UserRecordController');
@@ -90,7 +90,7 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
   }
 });
 
-router.get('/doner-get', getDonnerController);
+router.get('/doner-get', getContactDetails);
 
 // voluntieer oprations
 router.post(
@@ -104,6 +104,6 @@ router.post(
 );
 router.get('/get-Volunteers', getVolunteer);
 router.put('/update-volunteer/:id', updateVolunteer);
-router.delete('/delete-Volunteers/:id', deleteVolunteer);
+router.delete('/delete-volunteer/:id', deleteVolunteer);
 
 module.exports = router;

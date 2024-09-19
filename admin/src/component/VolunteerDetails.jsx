@@ -8,7 +8,7 @@ const VolunteerDetails = () => {
   const [volunteerData, setVolunteerData] = useState([]);
   const [editData, setEditData] = useState({});
   const [editMode, setEditMode] = useState(null);
-  console.log(editMode)
+  console.log(editMode);
 
   const fetchData = async () => {
     try {
@@ -42,6 +42,29 @@ const VolunteerDetails = () => {
         [e.target.name]: e.target.value,
       },
     });
+  };
+
+  // Delete volunteer data
+  const deleteData = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this volunteer?')) {
+      return;
+    }
+    try {
+      const response = await fetch(
+        SummaryApi.volunteersDelete.url.replace(':id', id),
+        {
+          method: SummaryApi.volunteersDelete.method,
+        }
+      );
+      const result = await response.json();
+      if (result.success) {
+        fetchData(); // Refresh the data after deletion
+      } else {
+        console.error('Failed to delete volunteer:', result.message);
+      }
+    } catch (error) {
+      console.error('Error deleting volunteer:', error);
+    }
   };
 
   // Update volunteer data
@@ -132,7 +155,7 @@ const VolunteerDetails = () => {
                       <input
                         type="email"
                         name="email"
-                        value={editData[detail._id]?.email || detail.email} // Fallback to original value
+                        value={editData[detail._id]?.email || detail.email} 
                         onChange={(e) => handleChange(e, detail._id)}
                         className="w-full p-2 border rounded"
                       />
@@ -300,12 +323,20 @@ const VolunteerDetails = () => {
                         Save
                       </button>
                     ) : (
-                      <button
+                     <div className="">
+                       <button
                         onClick={() => toggleEditMode(detail._id)}
                         className="bg-blue-500 text-white p-1 rounded"
                       >
                         Update
                       </button>
+                       <button
+                       onClick={() => deleteData(detail._id)}
+                       className="bg-red-500 text-white p-1 rounded"
+                     >
+                       Delete
+                     </button>
+                     </div>
                     )}
                   </td>
                 </tr>
