@@ -99,7 +99,7 @@ router.post(
   volunteerDetails
 );
 router.get('/get-Volunteers', getVolunteer);
-router.put('/get-Volunteers/:id', updateVolunteer);
+router.put('/update-volunteer/:id', updateVolunteer);
 router.delete('/delete-Volunteers/:id', deleteVolunteer);
 
 module.exports = router;

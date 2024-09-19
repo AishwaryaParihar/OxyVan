@@ -150,7 +150,7 @@ const ContactUs = () => {
         >
           <iframe
             className="w-full h-full"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.4619735791034!2d77.46113960000001!3d23.2626578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c69fcecdc38ad%3A0xf4d757a800f01720!2sChhatrasal%20Nagar%20Phase-2%2C%20Bharat%20Nagar%2C%20Indrapuri%2C%20Bhopal%2C%20Madhya%20Pradesh%20462022!5e0!3m2!1sen!2sin!4v1726302488928!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.6968190541393!2d77.45726259999999!3d23.2541172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c4208f5558a31%3A0xb0f0e9bca3db4bef!2s67%2C%20Indrapuri%20A%20sector%2C%20Sector%20A%2C%20Indrapuri%2C%20Bhopal%2C%20Madhya%20Pradesh%20462022!5e0!3m2!1sen!2sin!4v1726762808540!5m2!1sen!2sin"
             // frameBorder="0"
             allowFullScreen=""
             aria-hidden="false"

@@ -6,7 +6,9 @@ const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const VolunteerDetails = () => {
   const [volunteerData, setVolunteerData] = useState([]);
-  
+  const [editData, setEditData] = useState({});
+  const [editMode, setEditMode] = useState(null);
+
   const fetchData = async () => {
     try {
       const response = await fetch(SummaryApi.volunteersAll.url, {
@@ -30,6 +32,52 @@ const VolunteerDetails = () => {
     fetchData();
   }, []);
 
+  // Handle input change
+  const handleChange = (e, id) => {
+    setEditData({
+      ...editData,
+      [id]: {
+        ...editData[id],
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
+  // Update volunteer data
+  const UpdateData = async (id) => {
+    try {
+      const response = await fetch(
+        SummaryApi.volunteersUpdate.url.replace(':id', id),
+        {
+          method: SummaryApi.volunteersUpdate.method,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(editData[id]), // Send updated data
+        }
+      );
+
+      const result = await response.json();
+      if (result.success) {
+        setEditData({});
+        setEditMode(null);
+        fetchData();
+      } else {
+        console.error('Failed to update volunteer data:', result.message);
+      }
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
+  };
+
+  const toggleEditMode = (id) => {
+    setEditMode(id);
+    // Initialize editData if it doesn't exist
+    if (!editData[id]) {
+      setEditData({ [id]: volunteerData.find((data) => data._id === id) });
+    }
+  };
+
   return (
     <div className="bg-white pb-4">
       <div className="overflow-x-auto">
@@ -51,31 +99,161 @@ const VolunteerDetails = () => {
               <th className="p-2 text-left">Aadhar Card</th>
               <th className="p-2 text-left">Passbook</th>
               <th className="p-2 text-left">Created Date</th>
+              <th className="p-2 text-left">Actions</th>
             </tr>
           </thead>
           <tbody>
             {volunteerData.length === 0 ? (
               <tr>
-                <td colSpan="15" className="text-center p-4">No Volunteer Data Available</td>
+                <td colSpan="15" className="text-center p-4">
+                  No Volunteer Data Available
+                </td>
               </tr>
             ) : (
               volunteerData.map((detail, i) => (
-                <tr key={i} className="border-b">
+                <tr key={detail._id} className="border-b">
                   <td className="p-2">{i + 1}</td>
-                  <td className="p-2">{detail.name}</td>
-                  <td className="p-2">{detail.email}</td>
-                  <td className="p-2">{detail.phoneNumber}</td>
-                  <td className="p-2">{detail.address}</td>
-                  <td className="p-2">{detail.age}</td>
-                  <td className="p-2">{detail.occupation}</td>
-                  <td className="p-2">{detail.reasonForVolunteering}</td>
-                  <td className="p-2">{detail.priorExperience}</td>
-                  <td className="p-2">{detail.trainingSession}</td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="text"
+                        name="name"
+                        value={editData[detail._id]?.name || detail.name} // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.name
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="email"
+                        name="email"
+                        value={editData[detail._id]?.email || detail.email} // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.email
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="text"
+                        name="phoneNumber"
+                        value={
+                          editData[detail._id]?.phoneNumber ||
+                          detail.phoneNumber
+                        } // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.phoneNumber
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="text"
+                        name="address"
+                        value={editData[detail._id]?.address || detail.address} // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.address
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="number"
+                        name="age"
+                        value={editData[detail._id]?.age || detail.age} // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.age
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="text"
+                        name="occupation"
+                        value={
+                          editData[detail._id]?.occupation || detail.occupation
+                        } // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.occupation
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="text"
+                        name="reasonForVolunteering"
+                        value={
+                          editData[detail._id]?.reasonForVolunteering ||
+                          detail.reasonForVolunteering
+                        } // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.reasonForVolunteering
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="text"
+                        name="priorExperience"
+                        value={
+                          editData[detail._id]?.priorExperience ||
+                          detail.priorExperience
+                        } // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.priorExperience
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <input
+                        type="text"
+                        name="trainingSession"
+                        value={
+                          editData[detail._id]?.trainingSession ||
+                          detail.trainingSession
+                        } // Fallback to original value
+                        onChange={(e) => handleChange(e, detail._id)}
+                        className="w-full p-2 border rounded"
+                      />
+                    ) : (
+                      detail.trainingSession
+                    )}
+                  </td>
                   <td className="p-2">
                     {detail.note ? 'Accepted' : 'Not Accepted'}
                   </td>
                   <td className="p-2">
-                    <a href={`${apiBaseUrl}/files/${detail.panCardImage}`} target="_blank" download rel="noopener noreferrer">
+                    <a
+                      href={`${apiBaseUrl}/files/${detail.panCardImage}`}
+                      target="_blank"
+                      download
+                      rel="noopener noreferrer"
+                    >
                       <img
                         src={`${apiBaseUrl}/files/${detail.panCardImage}`}
                         alt="Pan Card"
@@ -84,7 +262,11 @@ const VolunteerDetails = () => {
                     </a>
                   </td>
                   <td className="p-2">
-                    <a href={`${apiBaseUrl}/files/${detail.aadharImage}`} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={`${apiBaseUrl}/files/${detail.aadharImage}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <img
                         src={`${apiBaseUrl}/files/${detail.aadharImage}`}
                         alt="Aadhar Card"
@@ -93,7 +275,11 @@ const VolunteerDetails = () => {
                     </a>
                   </td>
                   <td className="p-2">
-                    <a href={`${apiBaseUrl}/files/${detail.passbookImage}`} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={`${apiBaseUrl}/files/${detail.passbookImage}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <img
                         src={`${apiBaseUrl}/files/${detail.passbookImage}`}
                         alt="Passbook"
@@ -101,7 +287,26 @@ const VolunteerDetails = () => {
                       />
                     </a>
                   </td>
-                  <td className="p-2">{moment(detail.createdAt).format('LL')}</td>
+                  <td className="p-2">
+                    {moment(detail.createdAt).format('LL')}
+                  </td>
+                  <td className="p-2">
+                    {editMode === detail._id ? (
+                      <button
+                        onClick={() => UpdateData(detail._id)}
+                        className="bg-green-500 text-white p-1 rounded"
+                      >
+                        Save
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => toggleEditMode(detail._id)}
+                        className="bg-blue-500 text-white p-1 rounded"
+                      >
+                        Update
+                      </button>
+                    )}
+                  </td>
                 </tr>
               ))
             )}
