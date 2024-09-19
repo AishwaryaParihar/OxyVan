@@ -8,17 +8,17 @@ import OurImpact from './OurImpact'
 import Mission from './Mission'
 import Demoo from './Demoo'
 import GiftorDonate from './GiftorDonate'
-import TreePlantingInfo from './WhyDonate'
 import StepsDonation from './StepsDonation'
 import StepsSpent from './StepsSpent'
 import Voluanteer from './Voluanteer'
+import WhyDonate from './WhyDonate'
 
 const Home = () => {
   return (
     <div >
       <Hero/>
       <LeaderBoard/>
-      <TreePlantingInfo/>
+      <WhyDonate/>
       <GiftorDonate/>
       <StepsDonation/>
       <StepsSpent/>

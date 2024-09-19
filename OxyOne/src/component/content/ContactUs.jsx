@@ -140,8 +140,9 @@ const ContactUs = () => {
         <h2 className="text-3xl font-bold text-green-700 mb-6">Our Location</h2>
         <p className="text-green-800 mb-4">Timing: 9:30AM to 6:30PM</p>
         <p className="text-green-800 mb-4">
-          Office: 1/28, A Chhatrasal Nagar Phase-2, J.K. Road Bhopal (mp)
+          Office: Plot No. 67, sector A, Indrapuri, J.K. Road Bhopal (MP)
         </p>
+        <p className="text-green-800 mb-4">Pincode: 462023</p>
         <p className="text-green-800 mb-4">Phone: +91 9826499329</p>
         <p className="text-green-800 mb-4">Email: oxyvan65@gmail.com</p>
         <div

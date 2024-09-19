@@ -2,7 +2,7 @@ import React from 'react';
 import ListImage from '../../assets/benifit.png';
 import headlogo1 from "../../assets/flower-pot.png";
 
-const TreePlantingInfo = () => {
+const WhyDonate = () => {
   return (
     <div className="px-6 pt-20 lg:px-16">
       <div className="flex justify-center ">
@@ -16,7 +16,7 @@ const TreePlantingInfo = () => {
       
       <h3 className="text-2xl font-semibold text-green-700 mb-4">Reasons for Interest:</h3>
       
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center lg:space-x-10">
+      <div className="flex flex-col md:flex-row justify-between items-start lg:items-center lg:space-x-10">
         {/* Text Section */}
         <ul className="list-disc list-inside text-lg mb-6 space-y-2 lg:w-1/2">
           <li>Trees increase oxygen levels in the atmosphere.</li>
@@ -34,7 +34,7 @@ const TreePlantingInfo = () => {
           <img
             src={ListImage}
             alt="Tree Planting Benefits"
-            className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg shadow-lg"
+            className="w-full h-auto  rounded-lg shadow-lg"
           />
         </div>
       </div>
@@ -45,4 +45,4 @@ const TreePlantingInfo = () => {
   );
 }
 
-export default TreePlantingInfo;
+export default WhyDonate;

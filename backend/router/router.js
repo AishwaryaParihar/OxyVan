@@ -3,12 +3,17 @@ const userSignInController = require('../controller/SignInController');
 const contactUsController = require('../controller/contactController');
 const getContactDetails = require('../controller/contactGet');
 
-
 const router = express.Router();
 const multer = require('multer');
 const { default: mongoose } = require('mongoose');
 const getDonnerController = require('../controller/donorGet');
 const volunteerDetails = require('../controller/volunteerDetails');
+const {
+  getVolunteer,
+  updateVolunteer,
+  deleteVolunteer,
+} = require('../controller/getVolunteer');
+// const getVolunteer = require('../controller/getVolunteer');
 // const signInController = require('../controllers/SignInController');
 
 // storage
@@ -36,17 +41,44 @@ require('../models/donor');
 const donerschema = mongoose.model('donorModel');
 
 router.post('/upload-files', upload.single('panCard'), async (req, res) => {
-  const { name, phone, email } = req.body;
-  const filename = req.file;
+  const {
+    name,
+    address,
+    phone,
+    email,
+    donationAmount,
+    donationType,
+    paymentMethod,
+    paymentFrequency,
+    cardNumber,
+    expiryDate,
+    chequeNumber,
+    bankDetails,
+    donationPurpose,
+    anonymous,
+    updates,
+  } = req.body;
 
   console.log(req.file, req.body);
   const panCard = req.file.filename;
   try {
     await donerschema.create({
       name,
+      address,
       phone,
       email,
-      panCard: filename,
+      donationAmount,
+      donationType,
+      paymentMethod,
+      paymentFrequency,
+      cardNumber: paymentMethod === 'online' ? cardNumber : null,
+      expiryDate: paymentMethod === 'online' ? expiryDate : null,
+      chequeNumber: paymentMethod === 'cheque' ? chequeNumber : null,
+      bankDetails: paymentMethod === 'bank' ? bankDetails : null,
+      donationPurpose,
+      anonymous,
+      updates,
+      panCard: panCard,
     });
     res.send({ status: 'ok' });
   } catch (error) {
@@ -54,14 +86,20 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
   }
 });
 
-router.get("/doner-get", getDonnerController)
+router.get('/doner-get', getDonnerController);
 
-// voluntieer post 
-router.post('/volunteers', upload.fields([
-  { name: 'aadharImage', maxCount: 1 },
-  { name: 'panCardImage', maxCount: 1 },
-  { name: 'passbookImage', maxCount: 1 },
-]), volunteerDetails);
-
+// voluntieer oprations
+router.post(
+  '/volunteers',
+  upload.fields([
+    { name: 'aadharImage', maxCount: 1 },
+    { name: 'panCardImage', maxCount: 1 },
+    { name: 'passbookImage', maxCount: 1 },
+  ]),
+  volunteerDetails
+);
+router.get('/get-Volunteers', getVolunteer);
+router.put('/get-Volunteers/:id', updateVolunteer);
+router.delete('/delete-Volunteers/:id', deleteVolunteer);
 
 module.exports = router;
