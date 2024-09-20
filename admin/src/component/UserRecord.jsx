@@ -58,6 +58,33 @@ const UserRecord = () => {
     }
   };
 
+    // Delete volunteer data
+    const deleteData = async (id) => {
+      if (!window.confirm('Are you sure you want to delete this volunteer?')) {
+        return;
+      }
+      try {
+        const response = await fetch(
+          SummaryApi.deleteUserRecordDetails.url.replace(':id', id),
+          {
+            method: SummaryApi.deleteUserRecordDetails.method,
+          }
+        );
+        const result = await response.json();
+        if (result.success) {
+          fetchData(); // Refresh the data after deletion
+        } else {
+          console.error('Failed to delete volunteer:', result.message);
+        }
+      } catch (error) {
+        console.error('Error deleting volunteer:', error);
+      }
+    };
+  
+
+
+
+
   // Handle input change
   const handleChange = (e, id) => {
     setEditData({
@@ -182,12 +209,20 @@ const UserRecord = () => {
                     Save
                   </button>
                 ) : (
-                  <button
+                 <div className="">
+                   <button
                     onClick={() => toggleEditMode(details._id)}
                     className="bg-blue-500 text-white p-1 rounded"
                   >
                     Update
                   </button>
+                        <button
+                        onClick={() => deleteData(details._id)}
+                        className="bg-red-500 text-white p-1 rounded"
+                      >
+                        Delete
+                      </button>
+                 </div>
                 )}
               </td>
             </tr>
