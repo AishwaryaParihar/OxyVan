@@ -13,9 +13,15 @@ const SummaryApi = {
     url: `${backendDomain}/api/doner-get`,
     method: "get",
   },
-  imgURL:{
-    url:`${backendDomain}/files`
-  }
+
+  getUserRecordDetails:{
+    url:`${backendDomain}/api/get-userRecord`,
+    method: "get",
+  },
+  postUserRecordDetails:{
+    url:`${backendDomain}/api/post-userRecord`,
+    method: "post",
+  },
 }
 
 export default SummaryApi;

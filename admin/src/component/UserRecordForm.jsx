@@ -1,37 +1,91 @@
 import React, { useState } from 'react';
+import SummaryApi from '../common/SummaryApi';
 
-const handleInputs = () =>{
+
+
+const UserRecordForm = () => {
+
     const [formData , setFormData] = useState({
         name:'',
         number:'',
-        donationType:'',
-        tree:'',
-        money:'',
-        land:'',
+        // donationType:'',
+        numberOfTrees:'',
+        utrNumber:'',
+        landArea:'',
+        landAddress:'',
 
     })
-}
 
-const UserRecordForm = () => {
+      // Handler for input change
+  const handleinputs = (e) => {
+    const { name, value } = e.target;
+    
+  setFormData((prev)=>({
+    ...prev,
+    [name]:value,
+  }))
+  };
+
+
   const [donationType, setDonationType] = useState('');
   
   // Handler for dropdown change
   const handleDonationTypeChange = (e) => {
     setDonationType(e.target.value);
+    
   };
+
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+    console.log(formData)
+
+
+    try {
+      const postData = await fetch(SummaryApi.postUserRecordDetails.url, {
+        method: SummaryApi.postUserRecordDetails.method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      console.log(postData);
+      if (postData.ok) {
+        const result = await postData.json();
+        console.log('response', result);
+        alert('Submited succesfully');
+        // Reset the form data after successful submission
+        setFormData({
+          name:'',
+          number:'',
+          numberOfTrees:'',
+          utrNumber:'',
+          landArea:'',
+          landAddress:'',
+        });
+      } else {
+        console.log('Something went wrong');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+
+  }
 
   
 
   return (
     <>
       <div className="p-6 w-full mx-auto shadow-lg rounded-lg">
-        <form action="" className="space-y-4">
+        <form action="" onSubmit={handleSubmit} className="space-y-4">
           <div className="flex flex-col">
             <label htmlFor="name" className="mb-1 text-gray-700">Name: </label>
             <input 
               type="text" 
               name="name" 
               className="p-2 border border-gray-300 rounded" 
+              onChange={handleinputs}
+              value={formData.name}
             />
           </div>
 
@@ -41,6 +95,8 @@ const UserRecordForm = () => {
               type="phone" 
               name="number" 
               className="p-2 border border-gray-300 rounded" 
+              onChange={handleinputs}
+              value={formData.number}
             />
           </div>
 
@@ -69,6 +125,8 @@ const UserRecordForm = () => {
                 type="number" 
                 name="numberOfTrees" 
                 className="p-2 border border-gray-300 rounded" 
+                onChange={handleinputs}
+                value={formData.numberOfTrees}
               />
             </div>
           )}
@@ -80,6 +138,8 @@ const UserRecordForm = () => {
                 type="text" 
                 name="utrNumber" 
                 className="p-2 border border-gray-300 rounded" 
+                onChange={handleinputs}
+                value={formData.utrNumber}
               />
             </div>
           )}
@@ -92,6 +152,8 @@ const UserRecordForm = () => {
                   type="number" 
                   name="landArea" 
                   className="p-2 border border-gray-300 rounded" 
+                  onChange={handleinputs}
+                  value={formData.landArea}
                 />
               </div>
               <div className="flex flex-col">
@@ -100,6 +162,8 @@ const UserRecordForm = () => {
                   name="landAddress" 
                   className="p-2 border border-gray-300 rounded" 
                   rows="3"
+                  onChange={handleinputs}
+                  value={formData.landAddress}
                 ></textarea>
               </div>
             </>

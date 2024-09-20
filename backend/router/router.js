@@ -9,6 +9,8 @@ const multer = require('multer');
 const { default: mongoose } = require('mongoose');
 const getDonnerController = require('../controller/donorGet');
 const volunteerDetails = require('../controller/volunteerDetails');
+const getUserRecord = require('../controller/UserRecordController');
+const postUserRecord = require('../controller/UserRecordController');
 // const signInController = require('../controllers/SignInController');
 
 // storage
@@ -30,6 +32,8 @@ const upload = multer({ storage: storage });
 router.post('/signin', userSignInController);
 router.post('/contact', contactUsController);
 router.get('/get-contact', getContactDetails);
+router.get('/get-userRecord',getUserRecord);
+router.post('/post-userRecord',postUserRecord)
 
 require('../models/donor');
 
