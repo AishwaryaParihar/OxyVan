@@ -12,8 +12,8 @@ import Heading from './Heading';
 const SideBar = () => {
   return (
     <>
-      <div className="min-h-[calc(100vh-0px)] md:flex hidden">
-        <aside className="bg-primary min-h-full  w-full  max-w-60 customShadow text-white">
+      <div className="min-h-[calc(100vh-0px)] md:flex hidden max-w-full">
+        <aside className="bg-primary min-h-full  w-full  max-w-60 customShadow text-white ">
           <div className="h-32 my-12 flex justify-center items-center flex-col">
             <div className="text-8xl cursor-pointer  relative flex justify-center">
               <RiAdminFill />
@@ -34,7 +34,13 @@ const SideBar = () => {
                 to={'samples'}
                 className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
               >
-                samples
+                Doner Register
+              </Link>
+              <Link
+                to={'volunteer'}
+                className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
+              >
+                Volunteer Register
               </Link>
               <Link
                 to={'userRecordForm'}
@@ -52,11 +58,11 @@ const SideBar = () => {
           </div>
         </aside>
 
-        <main className="w-full h-full p-2">
+        <main className="w-full h-full p-2 overflow-auto">
           <div className="mb-16">
             {' '}
             <Heading />
-          </div>
+          </div >
           <Outlet />
         </main>
       </div>

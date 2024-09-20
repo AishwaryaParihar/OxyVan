@@ -9,6 +9,7 @@ import SideBar from "../component/SideBar";
 import ContactForm from "../component/ContactForm";
 import UserRecord from "../component/UserRecord";
 import UserRecordForm from "../component/UserRecordForm";
+import VolunteerDetails from "../component/VolunteerDetails";
 
 
 export const routeradmin = createBrowserRouter([
@@ -31,6 +32,10 @@ export const routeradmin = createBrowserRouter([
             {
               path: "samples",
               element: <Samples />,
+            },
+            {
+              path: "volunteer",
+              element: <VolunteerDetails />,
             },
             {
               path: "userRecord",

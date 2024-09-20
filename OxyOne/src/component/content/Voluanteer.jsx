@@ -44,8 +44,8 @@ const Voluanteer = () => {
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 1</div>
             <div className="text-3xl mb-2">🌳</div>
             <h2 className="text-lg font-bold text-blue-600">First Plantation</h2>
-            <p className="text-sm mt-2 text-gray-600">₹151 per tree</p>
-            <p className="text-xs text-gray-500 mt-1">At the time of each plantation</p>
+            <p className="text-sm mt-2 ">₹151 per tree</p>
+            <p className="text-xs  mt-1">At the time of each plantation</p>
           </div>
 
           {/* Option 2 */}
@@ -53,8 +53,8 @@ const Voluanteer = () => {
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 2</div>
             <div className="text-3xl mb-2">📅</div>
             <h2 className="text-lg font-bold text-blue-600">First Six Months</h2>
-            <p className="text-sm mt-2 text-gray-600">₹211 per tree</p>
-            <p className="text-xs text-gray-500 mt-1">On the date of first six months</p>
+            <p className="text-sm mt-2 ">₹211 per tree</p>
+            <p className="text-xs mt-1">On the date of first six months</p>
           </div>
 
           {/* Option 3 */}
@@ -62,8 +62,8 @@ const Voluanteer = () => {
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 3</div>
             <div className="text-3xl mb-2">🎉</div>
             <h2 className="text-lg font-bold text-purple-600">Annual Plantation Date</h2>
-            <p className="text-sm mt-2 text-gray-600">₹421 per tree</p>
-            <p className="text-xs text-gray-500 mt-1">On each anniversary of plantation</p>
+            <p className="text-sm mt-2 ">₹421 per tree</p>
+            <p className="text-xs  mt-1">On each anniversary of plantation</p>
           </div>
 
           {/* Option 4 */}
@@ -71,8 +71,8 @@ const Voluanteer = () => {
             <div className="text-2xl font-bold text-gray-700 mb-1">Step 4</div>
             <div className="text-3xl mb-2">📆</div>
             <h2 className="text-lg font-bold text-purple-600">Maximum Duration</h2>
-            <p className="text-sm mt-2 text-gray-600">Up to 11 years</p>
-            <p className="text-xs text-gray-600 mt-1">From the date of plantation</p>
+            <p className="text-sm mt-2 ">Up to 11 years</p>
+            <p className="text-xs  mt-1">From the date of plantation per tree</p>
           </div>
 
         </div>

@@ -1,102 +1,88 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
-// const DonorForm = () => {
-//   const [data, setData] = useState({
-//     name: '',
-//     address: '',
-//     phone: '',
-//     email: '',
-//     donationAmount: '',
-//     donationType: 'one-time',
-//     paymentMethod: 'online',
-//     paymentFrequency: 'monthly',
-//     cardNumber: '',
-//     expiryDate: '',
-//     chequeNumber: '',
-//     bankDetails: '',
-//     donationPurpose: '',
-//     anonymous: 'no',
-//     updates: 'no',
-//     panCard: null, // Added for PAN card upload
-//   });
+const DonorForm = () => {
+  const [data, setData] = useState({
+    name: '',
+    address: '',
+    phone: '',
+    email: '',
+    donationAmount: '',
+    donationType: 'one-time',
+    paymentMethod: 'online',
+    paymentFrequency: 'monthly',
+    cardNumber: '',
+    expiryDate: '',
+    chequeNumber: '',
+    bankDetails: '',
+    donationPurpose: '',
+    anonymous: 'no',
+    updates: 'no',
+    panCard: null, // Updated to handle file upload
+  });
 
-//   const fetchData = async () => {
-//     const fetchResponse = await fetch(
-//       'http://localhost:5000/api/upload-files',
-//       {
-//         method: 'post',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data),
-//       }
-//     );
-//   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setData({
-//       ...data,
-//       [name]: value,
-//     });
-//   };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setData({
+      ...data,
+      panCard: file,
+    });
+  };
 
-//   const handleFileChange = (e) => {
-//     const file = e.target.files[0];
-//     setData({
-//       ...data,
-//       panCard: file,
-//     });
-//   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     // Handle form submission logic, including the file upload
-//     const formData = new FormData();
-//     Object.keys(data).forEach((key) => {
-//       formData.append(key, data[key]);
-//     });
+    // Create a FormData object to handle file upload and form data
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => {
+      if (data[key] !== null) {
+        formData.append(key, data[key]);
+      }
+    });
 
-//     console.log('Donor Form submitted:', data);
+    console.log('Donor Form submitted:', data);
 
-//     try {
-//       const fetchResponse = await fetch(
-//         'http://localhost:8080/api/upload-files',
-//         {
-//           method: 'post',
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//           body: JSON.stringify(data),
-//         }
-//       );
-//       if (!fetchResponse.ok) {
-//         const errordata = await fetchResponse.json();
-//         console.error('error details', errordata);
-//       }
-//     } catch (error) {
-//       console.error(error);
-//     }
+    try {
+      const fetchResponse = await fetch(
+        'http://localhost:8080/api/upload-files',
+        {
+          method: 'POST',
+          body: formData, // Send FormData directly
+        }
+      );
 
-// Here, you would typically submit the form data to your server
-// Example: axios.post('your-endpoint', formData);
-// };
+      if (!fetchResponse.ok) {
+        const errordata = await fetchResponse.json();
+        console.error('Error details:', errordata);
+      } else {
+        console.log('Form submitted successfully');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+    }
+  };
 
-// return (
-//   <form onSubmit={handleSubmit}>
-//     {/* Donor Information */}
-//     <div className="mb-4">
-//       <label className="block text-green-700">Name</label>
-//       <input
-//         type="text"
-//         name="name"
-//         value={data.name}
-//         onChange={handleChange}
-//         className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-//       />
-//     </div>
-{
-  /* <div className="mb-4">
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Donor Information */}
+      <div className="mb-4">
+        <label className="block text-green-700">Name</label>
+        <input
+          type="text"
+          name="name"
+          value={data.name}
+          onChange={handleChange}
+          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+        />
+      </div>
+      <div className="mb-4">
         <label className="block text-green-700">Address</label>
         <input
           type="text"
@@ -105,50 +91,42 @@
           onChange={handleChange}
           className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
         />
-      </div> */
-}
-// <div className="mb-4">
-//   <label className="block text-green-700">Phone Number</label>
-//   <input
-//     type="tel"
-//     name="phone"
-//     value={data.phone}
-//     onChange={handleChange}
-//     className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-//   />
-// </div>
-// <div className="mb-4">
-//   <label className="block text-green-700">Email</label>
-//   <input
-//     type="email"
-//     name="email"
-//     value={data.email}
-//     onChange={handleChange}
-//     className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-//   />
-// </div>
+      </div>
+      <div className="mb-4">
+        <label className="block text-green-700">Phone Number</label>
+        <input
+          type="tel"
+          name="phone"
+          value={data.phone}
+          onChange={handleChange}
+          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+        />
+      </div>
+      <div className="mb-4">
+        <label className="block text-green-700">Email</label>
+        <input
+          type="email"
+          name="email"
+          value={data.email}
+          onChange={handleChange}
+          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+        />
+      </div>
 
-{
-  /* PAN Card Upload */
-}
-// <div className="mb-4">
-//   <label className="block text-green-700">Upload PAN Card</label>
-//   <input
-//     type="file"
-//     name="panCard"
-//     accept="image/*"
-//     onChange={handleFileChange}
-//     className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-//   />
-// </div>
+      {/* PAN Card Upload */}
+      <div className="mb-4">
+        <label className="block text-green-700">Upload PAN Card</label>
+        <input
+          type="file"
+          name="panCard"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+        />
+      </div>
 
-{
-  /* Donation Details */
-}
-{
-  /* <h2 className="text-2xl font-bold mb-6 text-green-900">
-        Donation Details
-      </h2>
+      {/* Donation Details */}
+      <h2 className="text-2xl font-bold mb-6 text-green-900">Donation Details</h2>
       <div className="mb-4">
         <label className="block text-green-700">Donation Amount (₹)</label>
         <input
@@ -170,16 +148,10 @@
           <option value="one-time">One-time donation</option>
           <option value="recurring">Recurring donation</option>
         </select>
-      </div> */
-}
+      </div>
 
-{
-  /* Payment Information
-      <h2 className="text-2xl font-bold mb-6 text-green-900"> */
-}
-{
-  /* Payment Information
-      </h2>
+      {/* Payment Information */}
+      <h2 className="text-2xl font-bold mb-6 text-green-900">Payment Information</h2>
       <div className="mb-4">
         <label className="block text-green-700">Payment Method</label>
         <select
@@ -242,12 +214,8 @@
         </div>
       )}
 
-      {/* Donation Purpose */
-}
-{
-  /* <h2 className="text-2xl font-bold mb-6 text-green-900">
-        Donation Purpose
-      </h2>
+      {/* Donation Purpose */}
+      <h2 className="text-2xl font-bold mb-6 text-green-900">Donation Purpose</h2>
       <div className="mb-4">
         <label className="block text-green-700">
           Specify the purpose of your donation (optional)
@@ -258,16 +226,10 @@
           onChange={handleChange}
           className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
         ></textarea>
-      </div>  */
-}
+      </div>
 
-{
-  /* Additional Information */
-}
-{
-  /* <h2 className="text-2xl font-bold mb-6 text-green-900">
-        Additional Information
-      </h2>
+      {/* Additional Information */}
+      <h2 className="text-2xl font-bold mb-6 text-green-900">Additional Information</h2>
       <div className="mb-4">
         <label className="block text-green-700">
           Would you like to remain anonymous?
@@ -284,7 +246,7 @@
       </div>
       <div className="mb-4">
         <label className="block text-green-700">
-          Would you like to receive updates on our work?
+          Would you like to receive updates from us?
         </label>
         <select
           name="updates"
@@ -295,145 +257,17 @@
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
-      </div> */
-}
-
-{
-  /* Submit Button */
-}
-//       <button
-//         type="submit"
-//         className="bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600"
-//       >
-//         Submit Donation
-//       </button>
-//     </form>
-//   );
-// };
-// export default DonorForm;
-
-import React, { useState } from 'react';
-
-const DonorForm = () => {
-  const [data, setData] = useState({
-    name: '',
-    address: '',
-    phone: '',
-    email: '',
-    donationAmount: '',
-    donationType: 'one-time',
-    paymentMethod: 'online',
-    paymentFrequency: 'monthly',
-    cardNumber: '',
-    expiryDate: '',
-    chequeNumber: '',
-    bankDetails: '',
-    donationPurpose: '',
-    anonymous: 'no',
-    updates: 'no',
-    panCard: '', // Added for PAN card upload
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setData({
-      ...data,
-      panCard: file,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Create a FormData object to handle file upload and form data
-    const formData = new FormData();
-    Object.keys(data).forEach((key) => {
-      formData.append(key, data[key]);
-    });
-
-    console.log('Donor Form submitted:', data);
-
-    try {
-      const fetchResponse = await fetch(
-        'http://localhost:8080/api/upload-files',
-        {
-          method: 'POST',
-          body: formData, // Send FormData directly
-        }
-      );
-
-      if (!fetchResponse.ok) {
-        const errordata = await fetchResponse.json();
-        console.error('Error details:', errordata);
-      } else {
-        console.log('Form submitted successfully');
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      {/* Donor Information */}
-      <div className="mb-4 ">
-        <label className="block text-green-700">Name</label>
-        <input
-          type="text"
-          name="name"
-          value={data.name}
-          onChange={handleChange}
-          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-        />
-      </div>
-      <div className="mb-4 ">
-        <label className="block text-green-700">Whatsapp Number</label>
-        <input
-          type="tel"
-          name="phone"
-          value={data.phone}
-          onChange={handleChange}
-          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-        />
-      </div>
-      <div className="mb-4">
-        <label className="block text-green-700">Email</label>
-        <input
-          type="email"
-          name="email"
-          value={data.email}
-          onChange={handleChange}
-          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-        />
-      </div>
-
-      {/* PAN Card Upload */}
-      <div className="mb-4 ">
-        <label className="block text-green-700">Upload PAN Card</label>
-        <input
-          type="file"
-          name="panCard"
-          accept="image/*"
-          onChange={handleFileChange}
-          className="w-full p-2 border border-green-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-        />
       </div>
 
       {/* Submit Button */}
-      <button
-        type="submit"
-        className="bg-green-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600"
-      >
-        Submit Donation
-      </button>
+      <div className="mb-4">
+        <button
+          type="submit"
+          className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 };

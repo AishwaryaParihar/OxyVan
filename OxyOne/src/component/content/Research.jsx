@@ -8,7 +8,7 @@ const Research = () => {
 
 
   return (
-    <div className="flex flex-col justify-center items-center px-4 lg:px-16 min-h-screen mt-12">
+    <div className="flex flex-col justify-center items-center px-4 lg:px-16 min-h-screen mt-12 text-justify">
 
 
       <div className="mt-8 bg-white  p-2 md:p-8 rounded-lg border-t-4 border-green-600 w-full">
@@ -30,7 +30,7 @@ const Research = () => {
           </div>
           
           {/* Image next to the content */}
-          <div className="lg:w-1/2 lg:ml-8 flex justify-center">
+          <div className="lg:w-1/2 lg:ml-8 flex justify-center pt-5">
             <img
               src={img}
               alt="Tree providing oxygen"
@@ -77,7 +77,7 @@ const Research = () => {
 
         <h2 className="text-2xl font-semibold text-green-700 mb-2 animate-info">The Importance of Tree Planting</h2>
         <p className="text-lg mb-4 animate-info">
-          Dr. Shahid Parvez, an environmentalist, spoke at an event on World Environment Day and shared the numerous benefits of planting trees. 
+          As per scientists, an environmentalist, spoke at an event on World Environment Day and shared the numerous benefits of planting trees. 
           Trees provide five major benefits:
         </p>
         <ul className="list-disc pl-6 animate-info">
