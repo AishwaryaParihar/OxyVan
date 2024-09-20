@@ -34,9 +34,7 @@ const SummaryApi = {
     url: `${backendDomain}/api/delete-volunteer/:id`,
     method: "delete",
   },
-  imgURL:{
-    url:`${backendDomain}`
-  }
+
 }
 
 export default SummaryApi;
