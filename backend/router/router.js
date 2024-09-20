@@ -8,13 +8,15 @@ const multer = require('multer');
 const { default: mongoose } = require('mongoose');
 const getDonnerController = require('../controller/donorGet');
 const volunteerDetails = require('../controller/volunteerDetails');
-const getUserRecord = require('../controller/UserRecordController');
-const postUserRecord = require('../controller/UserRecordController');
+// const getUserRecord = require('../controller/UserRecordController');
+// const postUserRecord = require('../controller/UserRecordController');
+// const getUserRecord = require('../controller/userRecord')
 const {
   getVolunteer,
   updateVolunteer,
   deleteVolunteer,
 } = require('../controller/getVolunteer');
+const { getUserRecord, postUserRecord, putUserRecord, deletedUserRecord } = require('../controller/userRecord');
 // const getVolunteer = require('../controller/getVolunteer');
 // const signInController = require('../controllers/SignInController');
 
@@ -37,8 +39,10 @@ const upload = multer({ storage: storage });
 router.post('/signin', userSignInController);
 router.post('/contact', contactUsController);
 router.get('/get-contact', getContactDetails);
-router.get('/get-userRecord',getUserRecord);
-router.post('/post-userRecord',postUserRecord)
+router.get('/get-userRecord', getUserRecord);
+router.post('/post-userRecord',postUserRecord);
+router.put('/putUserRecord/:id', putUserRecord)
+router.delete('delete-userRecord/:id',deletedUserRecord)
 
 require('../models/donor');
 

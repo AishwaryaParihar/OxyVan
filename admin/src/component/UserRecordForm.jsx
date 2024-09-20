@@ -8,7 +8,6 @@ const UserRecordForm = () => {
     const [formData , setFormData] = useState({
         name:'',
         number:'',
-
         numberOfTrees:'',
         utrNumber:'',
         landArea:'',
