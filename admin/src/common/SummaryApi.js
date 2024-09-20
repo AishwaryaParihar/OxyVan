@@ -34,7 +34,6 @@ const SummaryApi = {
     url: `${backendDomain}/api/delete-volunteer/:id`,
     method: "delete",
   },
-
 }
 
 export default SummaryApi;
