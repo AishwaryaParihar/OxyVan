@@ -8,17 +8,14 @@ const multer = require('multer');
 const { default: mongoose } = require('mongoose');
 const getDonnerController = require('../controller/donorGet');
 const volunteerDetails = require('../controller/volunteerDetails');
-<<<<<<< HEAD
 const getUserRecord = require('../controller/UserRecordController');
 const postUserRecord = require('../controller/UserRecordController');
-=======
 const {
   getVolunteer,
   updateVolunteer,
   deleteVolunteer,
 } = require('../controller/getVolunteer');
 // const getVolunteer = require('../controller/getVolunteer');
->>>>>>> 61526bc6c04774963a9022883d507b7ac35b168f
 // const signInController = require('../controllers/SignInController');
 
 // storage

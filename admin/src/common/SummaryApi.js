@@ -13,7 +13,6 @@ const SummaryApi = {
     url: `${backendDomain}/api/doner-get`,
     method: "get",
   },
-<<<<<<< HEAD
 
   getUserRecordDetails:{
     url:`${backendDomain}/api/get-userRecord`,
@@ -23,7 +22,6 @@ const SummaryApi = {
     url:`${backendDomain}/api/post-userRecord`,
     method: "post",
   },
-=======
   volunteersAll: {
     url: `${backendDomain}/api/get-Volunteers`,
     method: "get",
@@ -39,7 +37,6 @@ const SummaryApi = {
   imgURL:{
     url:`${backendDomain}`
   }
->>>>>>> 61526bc6c04774963a9022883d507b7ac35b168f
 }
 
 export default SummaryApi;
