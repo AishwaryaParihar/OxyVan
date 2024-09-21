@@ -37,7 +37,7 @@ router.get('/get-contact', getContactDetails);
 router.get('/get-userRecord', getUserRecord);
 router.post('/post-userRecord',postUserRecord);
 router.put('/putUserRecord/:id', putUserRecord)
-router.delete('delete-userRecord/:id',deletedUserRecord)
+router.delete('/delete-userRecord/:id',deletedUserRecord)
 
 require('../models/donor');
 
