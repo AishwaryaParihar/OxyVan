@@ -18,7 +18,7 @@ const Testimonials = () => {
 
         <img src={headlogo1} className="h-14 inline" alt="" />
       </div>
-      <div className="w-full mx-auto mt-12 mb-12 px-4 md:px-16">
+      <div className="w-full mx-auto mt-12 mb-12 px-4 lg:px-16">
         <Swiper
           spaceBetween={30}
           speed={1000}

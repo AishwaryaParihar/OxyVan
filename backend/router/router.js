@@ -7,13 +7,14 @@ const router = express.Router();
 const multer = require('multer');
 const { default: mongoose } = require('mongoose');
 const volunteerDetails = require('../controller/volunteerDetails');
-const getDonnerController=require('../controller/donorGet')
+// const getDonnerController=require('../controller/donorGet')
 const {
   getVolunteer,
   updateVolunteer,
   deleteVolunteer,
 } = require('../controller/getVolunteer');
 const { getUserRecord, postUserRecord, putUserRecord, deletedUserRecord } = require('../controller/userRecord');
+const { getDonnerController, updateDonor, deleteDoner } = require('../controller/donorGet');
 
 // storage
 const storage = multer.diskStorage({
@@ -92,6 +93,8 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
 });
 
 router.get('/doner-get', getDonnerController);
+router.put('/update-donor/:id', updateDonor)
+router.delete('/delete-donor/:id', deleteDoner)
 
 
 

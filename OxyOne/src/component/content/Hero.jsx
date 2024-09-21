@@ -103,7 +103,7 @@ const Hero = () => {
   })
 
   return (
-    <div className="hero flex flex-col md:flex-row items-center w-full bg-black bg-opacity-55 p-8 pt-36 px-4 md:px-16" >
+    <div className="hero flex flex-col md:flex-row items-center w-full bg-black bg-opacity-55 p-8 pt-36 px-4 lg:px-16" >
       <div className="md:w-1/2 w-full text-white content-box ">
         <h1 className="text-4xl mb-4 font-bold">
           Welcome to Our Mission

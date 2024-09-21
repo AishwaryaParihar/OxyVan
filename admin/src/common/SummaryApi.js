@@ -13,6 +13,14 @@ const SummaryApi = {
     url: `${backendDomain}/api/doner-get`,
     method: "get",
   },
+  donorAll: {
+    url: `${backendDomain}/api/update-donor/:id`,
+    method: "get",
+  },
+  donorAll: {
+    url: `${backendDomain}/api/delete-donor/:id`,
+    method: "get",
+  },
 
   getUserRecordDetails:{
     url:`${backendDomain}/api/get-userRecord`,

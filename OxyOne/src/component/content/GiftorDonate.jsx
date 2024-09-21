@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const GiftorDonate = () => {
   return (
-    <div className='bg-gradient-to-r from-green-700 to-green-900 px-4 py-5 md:px-14'>
+    <div className='bg-gradient-to-r from-green-700 to-green-900 px-4 py-5 lg:px-14'>
       <div className="heading text-center">
         <h2 className='pt-6 font-bold text-gray-900 text-2xl md:text-3xl'>
           <span className="text-white">Gifting</span> ❤️  & Donation

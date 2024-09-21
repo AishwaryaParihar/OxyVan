@@ -53,7 +53,7 @@ const PlantType = () => {
   }, []);
 
   return (
-    <div className="w-full px-4 md:px-16 plant">
+    <div className="w-full px-4 lg:px-16 plant">
       <div className="mt-10 lg:mt-20 md:p-4">
         <div className="flex justify-center">
           <div className="heading01">Nature's Oxygen Heroes</div>

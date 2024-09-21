@@ -55,7 +55,7 @@ const Mission = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col md:flex-row px-6 md:px-16 py-14">
+    <div className="w-full flex flex-col md:flex-row px-6 lg:px-16 py-14">
       <div className="w-full lg:w-1/2 md:p-4 flex flex-col justify-center text-justify section-text-container">
         {sectionContent.map(({ title, text }, index) => (
           <div key={index} className={`section-text ${index !== 0 ? "mt-4" : ""}`}>
@@ -68,7 +68,7 @@ const Mission = () => {
           </div>
         ))}
       </div>
-      <div className="w-full lg:w-1/2 p-4 flex justify-center items-center relative">
+      <div className="w-full lg:w-1/2 p-4 flex justify-center items-center relative mt-2">
         <div className="w-96 h-96 bg-gradient-to-r from-green-400 to-yellow-400 rounded-3xl"></div>
         <img
           src={planting}
