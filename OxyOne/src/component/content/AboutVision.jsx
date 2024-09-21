@@ -72,7 +72,7 @@ const AboutVision = () => {
           {index === 0 ? (
             <>
               <div
-                className="w-full md:w-1/2 flex flex-col justify-center items-center text-center md:text-left md:p-4"
+                className="w-full md:w-1/2 flex flex-col justify-center items-center text-justify md:text-left md:p-4"
                 ref={(el) => (textRefs.current[index] = el)}
               >
                 <div className="flex justify-center items-center text-justify">

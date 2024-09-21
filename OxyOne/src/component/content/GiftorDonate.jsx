@@ -11,12 +11,12 @@ const GiftorDonate = () => {
         <h2 className='pt-6 font-bold text-gray-900 text-2xl md:text-3xl'>
           <span className="text-white">Gifting</span> ❤️  & Donation
         </h2>
-        <p className="py-4 text-white text-lg md:text-2xl">
+        <p className="py-4 text-white text-lg md:text-2xl text-justify">
           All donations and gifts go towards the “OxyVan” fund and will result in a matching number of saplings planted in your name.
         </p>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row gap-8 px-6 md:px-16 pb-6">
+      <div className="w-full flex flex-col md:flex-row gap-8 px-4 md:px-16 pb-6">
         {/* Donate Money Section */}
         <Link to="/donate" className="md:w-1/3 w-full text-center border border-white flex flex-col rounded-xl transform hover:scale-105 transition-transform duration-300">
           <div className="flex justify-center items-center h-full mt-4">

@@ -1,6 +1,6 @@
 const donorModel = require('../models/donor');
 
-const getDonnerController=async (req,res)=>{
+async function getDonnerController(req,res){
  try{
     const donerData= await donorModel.find()
     
@@ -20,73 +20,4 @@ const getDonnerController=async (req,res)=>{
     )
  }
 }
-
-
-//  update volunteer form
-
-const updateDonor = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updatedData = req.body;
-    console.log(updatedData);
-    const updatedVolunteer = await donorModel.findByIdAndUpdate(
-      id,
-      updatedData,
-      { new: true }
-    );
-    if (!updatedVolunteer) {
-      return res.status(404).json({
-        message: 'Volunteer not found',
-        success: false,
-        error: true,
-      });
-    }
-
-    res.status(200).json({
-      data: updatedVolunteer,
-      message: 'Volunteer data updated succesfully',
-      success: true,
-      error: false,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: 'Form data not update' || error,
-      error: true,
-      success: false,
-    });
-  }
-};
-
-// Delete Donor
-const deleteDonor = async (req, res) => {
-  try {
-    const formid = req.params.id;
-    const deletedata = await donorModel.findByIdAndDelete(formid);
-    console.log('idddddddddd', formid);
-    if (!deletedata) {
-      return res.status(404).json({
-        message: 'Volunteer not found',
-        success: false,
-        error: true,
-      });
-    }
-
-    res.status(200).json({
-      message: 'Volunteer deleted successfully',
-      data: deletedata,
-      success: true,
-      error: false,
-    });
-  } catch (err) {
-    console.log('Error:', err);
-    res.status(500).json({
-      message: 'Error deleting volunteer',
-      err,
-      success: false,
-      error: true,
-    });
-  }
-};
-
-
-module.exports={getDonnerController,deleteDonor, updateDonor}
+module.exports=getDonnerController

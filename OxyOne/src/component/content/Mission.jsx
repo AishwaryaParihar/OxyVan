@@ -55,7 +55,7 @@ const Mission = () => {
   ];
 
   return (
-    <div className="w-full flex flex-col md:flex-row px-4 md:px-8 py-14">
+    <div className="w-full flex flex-col md:flex-row px-6 md:px-16 py-14">
       <div className="w-full lg:w-1/2 md:p-4 flex flex-col justify-center text-justify section-text-container">
         {sectionContent.map(({ title, text }, index) => (
           <div key={index} className={`section-text ${index !== 0 ? "mt-4" : ""}`}>

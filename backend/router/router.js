@@ -6,19 +6,14 @@ const getContactDetails = require('../controller/contactGet');
 const router = express.Router();
 const multer = require('multer');
 const { default: mongoose } = require('mongoose');
-// const getDonnerController = require('../controller/donorGet');
 const volunteerDetails = require('../controller/volunteerDetails');
-// const getUserRecord = require('../controller/UserRecordController');
-// const postUserRecord = require('../controller/UserRecordController');
-// const getUserRecord = require('../controller/userRecord')
+const getDonnerController=require('../controller/donorGet')
 const {
   getVolunteer,
   updateVolunteer,
   deleteVolunteer,
 } = require('../controller/getVolunteer');
 const { getUserRecord, postUserRecord, putUserRecord, deletedUserRecord } = require('../controller/userRecord');
-// const getVolunteer = require('../controller/getVolunteer');
-// const signInController = require('../controllers/SignInController');
 
 // storage
 const storage = multer.diskStorage({
@@ -46,6 +41,8 @@ router.delete('delete-userRecord/:id',deletedUserRecord)
 
 require('../models/donor');
 
+
+// doner controller section 
 const donerschema = mongoose.model('donorModel');
 
 router.post('/upload-files', upload.single('panCard'), async (req, res) => {
@@ -94,7 +91,10 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
   }
 });
 
-router.get('/doner-get', getContactDetails);
+router.get('/doner-get', getDonnerController);
+
+
+
 
 // voluntieer oprations
 router.post(
