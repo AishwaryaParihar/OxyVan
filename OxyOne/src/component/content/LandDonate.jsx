@@ -4,7 +4,8 @@ import DonateOptions from './DonateOptions.jsx'
 const LandDonate = () => {
   return (
     <div>
-<DonateOptions heading=" Donate Land"/>
+
+
 
 
     </div>
