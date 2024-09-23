@@ -10,6 +10,7 @@ import ContactForm from "../component/ContactForm";
 import UserRecord from "../component/UserRecord";
 import UserRecordForm from "../component/UserRecordForm";
 import VolunteerDetails from "../component/VolunteerDetails";
+import Register from "../component/Register";
 
 
 export const routeradmin = createBrowserRouter([
@@ -44,6 +45,10 @@ export const routeradmin = createBrowserRouter([
             {
               path: "userRecordForm",
               element: <UserRecordForm/>,
+            },
+            {
+              path: "register",
+              element: <Register/>,
             },
           ],
         },

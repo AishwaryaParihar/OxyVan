@@ -7,14 +7,24 @@ const router = express.Router();
 const multer = require('multer');
 const { default: mongoose } = require('mongoose');
 const volunteerDetails = require('../controller/volunteerDetails');
-// const getDonnerController=require('../controller/donorGet')
 const {
   getVolunteer,
   updateVolunteer,
   deleteVolunteer,
 } = require('../controller/getVolunteer');
-const { getUserRecord, postUserRecord, putUserRecord, deletedUserRecord } = require('../controller/userRecord');
-const { getDonnerController, updateDonor, deleteDoner } = require('../controller/donorGet');
+const {
+  getUserRecord,
+  postUserRecord,
+  putUserRecord,
+  deletedUserRecord,
+} = require('../controller/userRecord');
+const {
+  getDonnerController,
+  updateDonor,
+  deleteDoner,
+} = require('../controller/donorGet');
+const treeCategoryyy = require('../controller/treeCategory');
+const treeCategory = require('../controller/treeCategory');
 
 // storage
 const storage = multer.diskStorage({
@@ -36,14 +46,13 @@ router.post('/signin', userSignInController);
 router.post('/contact', contactUsController);
 router.get('/get-contact', getContactDetails);
 router.get('/get-userRecord', getUserRecord);
-router.post('/post-userRecord',postUserRecord);
-router.put('/putUserRecord/:id', putUserRecord)
-router.delete('/delete-userRecord/:id',deletedUserRecord)
+router.post('/post-userRecord', postUserRecord);
+router.put('/putUserRecord/:id', putUserRecord);
+router.delete('/delete-userRecord/:id', deletedUserRecord);
 
 require('../models/donor');
 
-
-// doner controller section 
+// doner controller section
 const donerschema = mongoose.model('donorModel');
 
 router.post('/upload-files', upload.single('panCard'), async (req, res) => {
@@ -68,6 +77,14 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
   console.log(req.file, req.body);
   const panCard = req.file.filename;
   try {
+    const existingDonor = await donerschema.findOne({ 
+      $or: [{ email: email }, { phone: phone }]
+    });
+
+    if (existingDonor) {
+      return res.status(400).json({ message: 'Email or phone number already registered' });
+    }
+
     await donerschema.create({
       name,
       address,
@@ -93,11 +110,8 @@ router.post('/upload-files', upload.single('panCard'), async (req, res) => {
 });
 
 router.get('/doner-get', getDonnerController);
-router.put('/update-donor/:id', updateDonor)
-router.delete('/delete-donor/:id', deleteDoner)
-
-
-
+router.put('/update-donor/:id', updateDonor);
+router.delete('/delete-donor/:id', deleteDoner);
 
 // voluntieer oprations
 router.post(
@@ -112,5 +126,9 @@ router.post(
 router.get('/get-Volunteers', getVolunteer);
 router.put('/update-volunteer/:id', updateVolunteer);
 router.delete('/delete-volunteer/:id', deleteVolunteer);
+
+
+// tree  routing 
+router.post('/category/:id',  treeCategory)
 
 module.exports = router;
