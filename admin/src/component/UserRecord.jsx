@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import SummaryApi from '../common/SummaryApi';
 import moment from 'moment';
+import Modal from './Modal'; // Import your new Modal component
 
 const UserRecord = () => {
   const [datas, setData] = useState([]);
   const [editData, setEditData] = useState({});
   const [editMode, setEditMode] = useState(null);
+  const [activeTab, setActiveTab] = useState('money');
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
+  const [selectedTreeDetails, setSelectedTreeDetails] = useState([]); // State for tree details
 
+  // Fetch user data from API
   const fetchData = async () => {
     try {
-      const fetchContactData = await fetch(SummaryApi.getUserRecordDetails.url, {
-        method: SummaryApi.getUserRecordDetails.method,
-        credentials: 'include'
-      });
+      const fetchContactData = await fetch(
+        SummaryApi.getUserRecordDetails.url,
+        {
+          method: SummaryApi.getUserRecordDetails.method,
+          credentials: 'include',
+        }
+      );
       const responseData = await fetchContactData.json();
       if (responseData.success) {
         setData(responseData.data);
       }
     } catch (err) {
-      console.log("Something went wrong", err);
+      console.log('Something went wrong', err);
     }
   };
 
-  // Update user record data
   const UpdateData = async (id) => {
     try {
       const response = await fetch(
@@ -32,7 +39,7 @@ const UserRecord = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(editData[id]), // Send updated data
+          body: JSON.stringify(editData[id]),
         }
       );
 
@@ -49,43 +56,35 @@ const UserRecord = () => {
     }
   };
 
-  // Toggle edit mode
   const toggleEditMode = (id) => {
     setEditMode(id);
     if (!editData[id]) {
-      // Pre-fill editData with the current record's data
       setEditData({ [id]: datas.find((data) => data._id === id) });
     }
   };
 
-    // Delete volunteer data
-    const deleteData = async (id) => {
-      if (!window.confirm('Are you sure you want to delete this volunteer?')) {
-        return;
-      }
-      try {
-        const response = await fetch(
-          SummaryApi.deleteUserRecordDetails.url.replace(':id', id),
-          {
-            method: SummaryApi.deleteUserRecordDetails.method,
-          }
-        );
-        const result = await response.json();
-        if (result.success) {
-          fetchData(); // Refresh the data after deletion
-        } else {
-          console.error('Failed to delete volunteer:', result.message);
+  const deleteData = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this user?')) {
+      return;
+    }
+    try {
+      const response = await fetch(
+        SummaryApi.deleteUserRecordDetails.url.replace(':id', id),
+        {
+          method: SummaryApi.deleteUserRecordDetails.method,
         }
-      } catch (error) {
-        console.error('Error deleting volunteer:', error);
+      );
+      const result = await response.json();
+      if (result.success) {
+        fetchData();
+      } else {
+        console.error('Failed to delete user:', result.message);
       }
-    };
-  
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
 
-
-
-
-  // Handle input change
   const handleChange = (e, id) => {
     setEditData({
       ...editData,
@@ -97,138 +96,219 @@ const UserRecord = () => {
   };
 
   useEffect(() => {
+    document.title = 'User Records Management';
     fetchData();
   }, []);
 
+  const renderTableRows = () => {
+    return datas.map((details, index) => (
+      <tr key={index} className="border-b">
+        <td className="p-2">{index + 1}</td>
+        <td className="p-2">
+          {editMode === details._id ? (
+            <input
+              type="text"
+              name="name"
+              value={editData[details._id]?.name || ''}
+              onChange={(e) => handleChange(e, details._id)}
+              className="w-full p-2 border rounded"
+            />
+          ) : (
+            details.name
+          )}
+        </td>
+        <td className="p-2">
+          {editMode === details._id ? (
+            <input
+              type="text"
+              name="number"
+              value={editData[details._id]?.number || ''}
+              onChange={(e) => handleChange(e, details._id)}
+              className="w-full p-2 border rounded"
+            />
+          ) : (
+            details.number
+          )}
+        </td>
+
+        {activeTab === 'money' && (
+          <>
+            <td className="p-2">
+              {editMode === details._id ? (
+                <input
+                  type="number"
+                  name="ammount"
+                  value={editData[details._id]?.ammount || ''}
+                  onChange={(e) => handleChange(e, details._id)}
+                  className="w-full p-2 border rounded"
+                />
+              ) : (
+                details.ammount
+              )}
+            </td>
+            <td className="p-2">
+              {editMode === details._id ? (
+                <input
+                  type="text"
+                  name="utrNumber"
+                  value={editData[details._id]?.utrNumber || ''}
+                  onChange={(e) => handleChange(e, details._id)}
+                  className="w-full p-2 border rounded"
+                />
+              ) : (
+                details.utrNumber
+              )}
+            </td>
+          </>
+        )}
+
+        {activeTab === 'tree' && (
+          <td className="p-2">
+            <button
+              onClick={() => {
+                setSelectedTreeDetails(details.trees || []); // Ensure trees are passed
+                setIsModalOpen(true); // Open modal
+              }}
+              className="bg-blue-500 text-white p-1 rounded"
+            >
+              View Trees
+            </button>
+          </td>
+        )}
+
+        {activeTab === 'land' && (
+          <>
+            <td className="p-2"> 
+              {editMode === details._id ?(
+                <input
+                  type="text"
+                  name="landArea"
+                  value={editData[details._id]?.landArea || ''}
+                  onChange={(e) => handleChange(e, details._id)}
+                  className="w-full p-2 border rounded"
+                />
+              ) : (
+                details.landArea
+              )}
+            </td>
+            <td className="p-2">
+              {editMode === details._id ? (
+                <input
+                  type="text"
+                  name="landAddress"
+                  value={editData[details._id]?.landAddress || ''}
+                  onChange={(e) => handleChange(e, details._id)}
+                  className="w-full p-2 border rounded"
+                />
+              ) : (
+                details.landAddress
+              )}
+            </td>
+          </>
+        )}
+
+        <td className="p-2">
+          {editMode === details._id ? (
+            <button
+              onClick={() => UpdateData(details._id)}
+              className="bg-green-500 text-white p-1 rounded"
+            >
+              Save
+            </button>
+          ) : (
+            <div>
+              <button
+                onClick={() => toggleEditMode(details._id)}
+                className="bg-blue-500 text-white p-1 rounded"
+              >
+                Update
+              </button>
+              <button
+                onClick={() => deleteData(details._id)}
+                className="bg-red-500 text-white p-1 rounded"
+              >
+                Delete
+              </button>
+            </div>
+          )}
+        </td>
+      </tr>
+    ));
+  };
+
   return (
-    <div className='bg-white pb-4'>
-      <table className="w-full">
+    <div className="bg-white pb-4">
+      <h1 className="text-2xl font-bold mb-4 text-center">
+        User Records Management
+      </h1>
+
+      {/* Tab navigation */}
+      <div className="flex justify-center mb-4">
+        <button
+          className={`p-2 mx-2 transition-all duration-300 ease-in-out transform ${
+            activeTab === 'money'
+              ? 'bg-green-500 text-white scale-105 border border-green-600 rounded-lg shadow-lg'
+              : 'bg-gray-200 border border-gray-300 hover:bg-green-200 rounded-lg'
+          }`}
+          onClick={() => setActiveTab('money')}
+        >
+          Money
+        </button>
+        <button
+          className={`p-2 mx-2 transition-all duration-300 ease-in-out transform ${
+            activeTab === 'tree'
+              ? 'bg-green-500 text-white scale-105 border border-green-600 rounded-lg shadow-lg'
+              : 'bg-gray-200 border border-gray-300 hover:bg-green-200 rounded-lg'
+          }`}
+          onClick={() => setActiveTab('tree')}
+        >
+          Trees
+        </button>
+        <button
+          className={`p-2 mx-2 transition-all duration-300 ease-in-out transform ${
+            activeTab === 'land'
+              ? 'bg-green-500 text-white scale-105 border border-green-600 rounded-lg shadow-lg'
+              : 'bg-gray-200 border border-gray-300 hover:bg-green-200 rounded-lg'
+          }`}
+          onClick={() => setActiveTab('land')}
+        >
+          Land
+        </button>
+      </div>
+
+      <table className="w-full border border-collapse">
         <thead>
-          <tr className="bg-primary text-white">
-            <th className='p-2 text-left'>S.No.</th>
-            <th className='p-2 text-left'>Name</th>
-            <th className='p-2 text-left'>Number of Trees</th>
-            <th className='p-2 text-left'>Contact No</th>
-            <th className='p-2 text-left'>UTR Number</th>
-            <th className='p-2 text-left'>Land Area</th>
-            <th className='p-2 text-left'>Land Address</th>
-            <th className='p-2 text-left'>Created Date</th>
-            <th className='p-2 text-left'>Actions</th>
+          <tr>
+            <th className="p-2 border">#</th>
+            <th className="p-2 border">Name</th>
+            <th className="p-2 border">Number</th>
+            {activeTab === 'money' && (
+              <>
+                <th className="p-2 border">Amount</th>
+                <th className="p-2 border">UTR Number</th>
+              </>
+            )}
+            {activeTab === 'tree' && (
+              <th className="p-2 border">Tree Details</th>
+            )}
+            {activeTab === 'land' && (
+              <>
+                <th className="p-2 border">Land Area</th>
+                <th className="p-2 border">Land Address</th>
+              </>
+            )}
+            <th className="p-2 border">Actions</th>
           </tr>
         </thead>
-
-        <tbody>
-          {datas.map((details, index) => (
-            <tr key={index} className='border-b'>
-              <td className='p-2'>{index + 1}</td>
-              <td className="p-2">
-                {editMode === details._id ? (
-                  <input
-                    type="text"
-                    name="name"
-                    value={editData[details._id]?.name || ''}
-                    onChange={(e) => handleChange(e, details._id)}
-                    className="w-full p-2 border rounded"
-                  />
-                ) : (
-                  details.name
-                )}
-              </td>
-              <td className='p-2'>
-                {editMode === details._id ? (
-                  <input
-                    type="number"
-                    name="numberOfTrees"
-                    value={editData[details._id]?.numberOfTrees || ''}
-                    onChange={(e) => handleChange(e, details._id)}
-                    className="w-full p-2 border rounded"
-                  />
-                ) : (
-                  details.numberOfTrees
-                )}
-              </td>
-              <td className='p-2'>
-                {editMode === details._id ? (
-                  <input
-                    type="text"
-                    name="number"
-                    value={editData[details._id]?.number || ''}
-                    onChange={(e) => handleChange(e, details._id)}
-                    className="w-full p-2 border rounded"
-                  />
-                ) : (
-                  details.number
-                )}
-              </td>
-              <td className='p-2'>
-                {editMode === details._id ? (
-                  <input
-                    type="text"
-                    name="utrNumber"
-                    value={editData[details._id]?.utrNumber || ''}
-                    onChange={(e) => handleChange(e, details._id)}
-                    className="w-full p-2 border rounded"
-                  />
-                ) : (
-                  details.utrNumber
-                )}
-              </td>
-              <td className='p-2'>
-                {editMode === details._id ? (
-                  <input
-                    type="text"
-                    name="landArea"
-                    value={editData[details._id]?.landArea || ''}
-                    onChange={(e) => handleChange(e, details._id)}
-                    className="w-full p-2 border rounded"
-                  />
-                ) : (
-                  details.landArea
-                )}
-              </td>
-              <td className='p-2'>
-                {editMode === details._id ? (
-                  <input
-                    type="text"
-                    name="landAddress"
-                    value={editData[details._id]?.landAddress || ''}
-                    onChange={(e) => handleChange(e, details._id)}
-                    className="w-full p-2 border rounded"
-                  />
-                ) : (
-                  details.landAddress
-                )}
-              </td>
-              <td className='p-2'>{moment(details?.createdAt).format('LL')}</td>
-              <td className='p-2'>
-                {editMode === details._id ? (
-                  <button
-                    onClick={() => UpdateData(details._id)}
-                    className="bg-green-500 text-white p-1 rounded"
-                  >
-                    Save
-                  </button>
-                ) : (
-                 <div className="">
-                   <button
-                    onClick={() => toggleEditMode(details._id)}
-                    className="bg-blue-500 text-white p-1 rounded"
-                  >
-                    Update
-                  </button>
-                        <button
-                        onClick={() => deleteData(details._id)}
-                        className="bg-red-500 text-white p-1 rounded"
-                      >
-                        Delete
-                      </button>
-                 </div>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        <tbody>{renderTableRows()}</tbody>
       </table>
+
+      {/* Modal for tree details */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        treeDetails={selectedTreeDetails}
+      />
     </div>
   );
 };
