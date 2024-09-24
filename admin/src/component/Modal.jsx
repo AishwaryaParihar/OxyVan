@@ -4,13 +4,13 @@ const Modal = ({ isOpen, onClose, treeDetails }) => {
   if (!isOpen) return null;
 
   return (
-    <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-      <div className='bg-white p-4 rounded shadow-lg'>
-        <h2 className='text-xl font-bold mb-2'>Tree Details</h2>
+    <div className='fixed inset-0 flex items-center justify-center  bg-black bg-opacity-50'>
+      <div className='bg-white p-4 rounded shadow-lg px-8 py-3 w-2/6'>
+        <h2 className='text-xl font-bold mb-2 underline '>Tree Details</h2>
         {treeDetails.length > 0 ? (
           treeDetails.map((tree, index) => (
-            <div key={index} className='mb-2'>
-              <strong>{tree.name}</strong>: {tree.number}
+            <div key={index} className='mb-2 my-4 text-2xl'>
+              <strong>{tree.treeType}</strong>: {tree.numberOfTrees}
             </div>
           ))
         ) : (

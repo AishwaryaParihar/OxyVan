@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SummaryApi from '../common/SummaryApi';
 import moment from 'moment';
 import Modal from './Modal'; // Import your new Modal component
+import { RiDeleteBinLine } from "react-icons/ri";
+import { MdOutlineModeEdit } from "react-icons/md";
 
 const UserRecord = () => {
   const [datas, setData] = useState([]);
@@ -17,7 +19,7 @@ const UserRecord = () => {
       const fetchContactData = await fetch(
         SummaryApi.getUserRecordDetails.url,
         {
-          method: SummaryApi.getUserRecordDetails.method,
+          method: SummaryApi.getUserRecordDetails.method, 
           credentials: 'include',
         }
       );
@@ -102,7 +104,7 @@ const UserRecord = () => {
 
   const renderTableRows = () => {
     return datas.map((details, index) => (
-      <tr key={index} className="border-b">
+      <tr key={index} className="border-b text-center font-semibold">
         <td className="p-2">{index + 1}</td>
         <td className="p-2">
           {editMode === details._id ? (
@@ -169,7 +171,7 @@ const UserRecord = () => {
                 setSelectedTreeDetails(details.trees || []); // Ensure trees are passed
                 setIsModalOpen(true); // Open modal
               }}
-              className="bg-blue-500 text-white p-1 rounded"
+              className="bg-green-700 text-white p-1 rounded"
             >
               View Trees
             </button>
@@ -211,7 +213,7 @@ const UserRecord = () => {
           {editMode === details._id ? (
             <button
               onClick={() => UpdateData(details._id)}
-              className="bg-green-500 text-white p-1 rounded"
+              className="bg-green-500 text-white p-1 rounded mx-2"
             >
               Save
             </button>
@@ -219,15 +221,15 @@ const UserRecord = () => {
             <div>
               <button
                 onClick={() => toggleEditMode(details._id)}
-                className="bg-blue-500 text-white p-1 rounded"
+                className="bg-blue-500 text-white p-1 rounded mx-2"
               >
-                Update
+          <MdOutlineModeEdit />
               </button>
               <button
                 onClick={() => deleteData(details._id)}
-                className="bg-red-500 text-white p-1 rounded"
+                className="bg-red-500 text-white p-1 rounded mx-2"
               >
-                Delete
+               <RiDeleteBinLine  />
               </button>
             </div>
           )}
