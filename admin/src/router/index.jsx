@@ -52,7 +52,6 @@ export const routeradmin = createBrowserRouter([
               element: <UserRecordForm/>,
             },
             {
-<<<<<<< HEAD
               path: "dashboard",
               element: <Dashboard/>,
               children:[
@@ -62,12 +61,10 @@ export const routeradmin = createBrowserRouter([
                 }
               ]
             },
-            
-=======
+            {
               path: "register",
               element: <Register/>,
             },
->>>>>>> 45ab22a289d9beea6b71c6c4ecca5d294c9b4fdd
           ],
         },
       ],
