@@ -17,14 +17,16 @@ const DonorSchema = new Schema(
     phone: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      unique:true
     },
     email: {
       type: String,
       required: true,
       trim: true,
       lowercase: true,
-      match: [/.+@.+\..+/, 'Please enter a valid email address']
+      match: [/.+@.+\..+/, 'Please enter a valid email address'],
+      unique:true
     },
     donationAmount: {
       type: Number,

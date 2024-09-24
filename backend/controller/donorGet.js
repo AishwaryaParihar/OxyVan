@@ -22,6 +22,7 @@ const getDonnerController=async (req,res)=>{
 }
 
 
+
 //  update volunteer form
 
 const updateDonor = async (req, res) => {
@@ -29,12 +30,12 @@ const updateDonor = async (req, res) => {
     const { id } = req.params;
     const updatedData = req.body;
     console.log(updatedData);
-    const updatedVolunteer = await donorModel.findByIdAndUpdate(
+    const updatedDonor = await donorModel.findByIdAndUpdate(
       id,
       updatedData,
       { new: true }
     );
-    if (!updatedVolunteer) {
+    if (!updatedDonor) {
       return res.status(404).json({
         message: 'Volunteer not found',
         success: false,
@@ -43,7 +44,7 @@ const updateDonor = async (req, res) => {
     }
 
     res.status(200).json({
-      data: updatedVolunteer,
+      data: updatedDonor,
       message: 'Volunteer data updated succesfully',
       success: true,
       error: false,
@@ -57,13 +58,13 @@ const updateDonor = async (req, res) => {
   }
 };
 
-// Delete Donor
-const deleteDonor = async (req, res) => {
+// Delete volunteer
+const deleteDoner= async (req, res) => {
   try {
     const formid = req.params.id;
-    const deletedata = await donorModel.findByIdAndDelete(formid);
+    const deletedDoner = await donorModel.findByIdAndDelete(formid);
     console.log('idddddddddd', formid);
-    if (!deletedata) {
+    if (!deletedDoner) {
       return res.status(404).json({
         message: 'Volunteer not found',
         success: false,
@@ -73,7 +74,7 @@ const deleteDonor = async (req, res) => {
 
     res.status(200).json({
       message: 'Volunteer deleted successfully',
-      data: deletedata,
+      data: deletedDoner,
       success: true,
       error: false,
     });
@@ -87,6 +88,4 @@ const deleteDonor = async (req, res) => {
     });
   }
 };
-
-
-module.exports={getDonnerController,deleteDonor, updateDonor}
+module.exports={getDonnerController, updateDonor, deleteDoner}

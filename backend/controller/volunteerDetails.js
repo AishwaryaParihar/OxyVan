@@ -27,6 +27,17 @@ const volunteerDetails = async (req, res) => {
   console.log('bodyyy', req.body); 
   console.log(req.files);
   try {
+    
+    const existingVolunteer = await volunteerModel.findOne({ 
+      $or: [{ email: email }, { phoneNumber: phoneNumber }]
+    });
+
+    if (existingVolunteer) {
+      return res.status(400).json({ message: 'Email or phone number already registered' });
+    }
+
+
+
 
     await volunteerModel.create({
       name,

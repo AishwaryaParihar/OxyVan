@@ -47,11 +47,11 @@ const OurImpact = () => {
       </div>
       <div className="subheading mr-8"> {impactdicription.subtitle} </div>
 
-      <div className="text-lg text-center  mb-12">
+      <div className="text-lg text-justify  mb-12">
         {impactdicription.discription}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-8 text-justify">
         {" "}
         {ourImpactData.map(({ title, text, image }, index) => (
           <div

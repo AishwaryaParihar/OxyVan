@@ -37,6 +37,12 @@ const SideBar = () => {
                 Contact Details
               </Link>
               <Link
+                to={'register'}
+                className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
+              >
+                Registration
+              </Link>
+              <Link
                 to={'samples'}
                 className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
               >
@@ -60,6 +66,7 @@ const SideBar = () => {
               >
                 User Record
               </Link>
+             
             </nav>
           </div>
         </aside>

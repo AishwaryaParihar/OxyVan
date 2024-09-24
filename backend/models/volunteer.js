@@ -15,10 +15,12 @@ const volunteerSchema = new schema(
     phoneNumber: {
       type: String,
       required: true,
+      unique:true
     },
     email: {
       type: String,
       required: true,
+      unique:true
     },
     age: {
       type: Number,
@@ -29,13 +31,16 @@ const volunteerSchema = new schema(
       required: true,
     },
     aadharImage: {
-      type: String, // store as URL or file path
+      type: String,
+      required: true, 
     },
     panCardImage: {
-      type: String, // store as URL or file path
+      type: String,
+      required: true,
     },
     passbookImage: {
-      type: String, // store as URL or file path
+      type: String,
+      required: true,
     },
     reasonForVolunteering: {
       type: String,
