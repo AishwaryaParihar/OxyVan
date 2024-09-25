@@ -24,14 +24,14 @@ const getUserRecord = async (req, res) => {
 
 // Post Request Controller
 const postUserRecord = async (req, res) => {
-  const { name, number, trees, amount, utrNumber, landArea, landAddress } = req.body;
+  const { name, number, trees, ammount, utrNumber, landArea, landAddress } = req.body;
   
   try {
     const addContactDetails = new UserRecordModel({
       name,
       number,
       trees, // Expecting an array of tree objects
-      amount, // Fixed spelling from 'ammount' to 'amount'
+      ammount, // Fixed spelling from 'ammount' to 'amount'
       utrNumber,
       landArea,
       landAddress,

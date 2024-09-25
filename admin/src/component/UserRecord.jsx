@@ -286,7 +286,7 @@ const UserRecord = () => {
             <th className="p-2 border">Number</th>
             {activeTab === 'money' && (
               <>
-                <th className="p-2 border">Amount</th>
+                <th className="p-2 border">ammount</th>
                 <th className="p-2 border">UTR Number</th>
               </>
             )}
