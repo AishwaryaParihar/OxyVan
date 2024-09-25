@@ -109,7 +109,7 @@ const deletedUserRecord = async (req, res) => {
       });
     }
 
-    res.status(200).json({
+    res.status(200).json({  
       message: 'Volunteer deleted successfully',
       data: deleteData,
       success: true,
