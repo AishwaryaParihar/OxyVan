@@ -1,101 +1,99 @@
-const UserRecordModel = require("../models/userRecord")
+const UserRecordModel = require("../models/userRecord");
 
-const getUserRecord= async (req, res)=>{
-    try{
-        const getDetails=await UserRecordModel.find()
+// Get User Records
+const getUserRecord = async (req, res) => {
+  try {
+    const getDetails = await UserRecordModel.find();
 
-        res.status(200).json({
-            message:"contact details get succesfully",
-            data:getDetails,
-            success:true,
-            error:false
-        })
-        
-    }catch(err){
-     res.status(500).json({
-        message:"can not get the contact details",
-        success:false,
-        error:true
-     })
-    }
-}
+    res.status(200).json({
+      message: "Contact details retrieved successfully",
+      data: getDetails,
+      success: true,
+      error: false,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: "Cannot retrieve contact details",
+      success: false,
+      error: true,
+      details: err.message,
+    });
+  }
+};
 
-
-// post request controller 
-
-const postUserRecord=async(req, res)=> {
-    const {name, number,  numberOfTrees, utrNumber, landArea, landAddress } = req.body;
-    try {
-        const addContactDetails = new UserRecordModel({
-            name,
-            number,
-            numberOfTrees,
-            utrNumber,
-            landArea,
-            landAddress,
-        });
-
-
-
-        await addContactDetails.save();
-
-        res.status(200).json({
-            message: "Contact details added successfully",
-            data: addContactDetails,
-            success: true,
-            error: false
-        });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            message: "Contact details were not stored",
-            success: false,
-            error: true,
-            details: err.message 
-        });
-    }
-}
-
-
-// update request controller
-
-
-const putUserRecord = async (req, res) => {
-    try {
-      const { id } = req.params;
-      const updatedData = req.body;
-      console.log(updatedData);
-      const updatedUserRecord = await UserRecordModel.findByIdAndUpdate(
-        id,
-        updatedData,
-        { new: true }
-      );
-      if (!updatedUserRecord) {
-        return res.status(404).json({
-          message: 'Volunteer not found',
-          success: false,
-          error: true,
-        });
-      }
+// Post Request Controller
+const postUserRecord = async (req, res) => {
+  const { name, number, trees, ammount, utrNumber, landArea, landAddress } = req.body;
   
-      res.status(200).json({
-        data: updatedUserRecord,
-        message: 'Volunteer data updated succesfully',
-        success: true,
-        error: false,
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: 'Form data not update' || error,
-        error: true,
+  try {
+    const addContactDetails = new UserRecordModel({
+      name,
+      number,
+      trees, // Expecting an array of tree objects
+      ammount, // Fixed spelling from 'ammount' to 'amount'
+      utrNumber,
+      landArea,
+      landAddress,
+    });
+
+    await addContactDetails.save();
+
+    res.status(201).json({
+      message: "Contact details added successfully",
+      data: addContactDetails,
+      success: true,
+      error: false,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: "Contact details were not stored",
+      success: false,
+      error: true,
+      details: err.message,
+    });
+  }
+};
+
+// Update Request Controller
+const putUserRecord = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedData = req.body; // Expecting the updated data structure to match the schema
+
+    const updatedUserRecord = await UserRecordModel.findByIdAndUpdate(
+      id,
+      updatedData,
+      { new: true }
+    );
+
+    if (!updatedUserRecord) {
+      return res.status(404).json({
+        message: "User not found",
         success: false,
+        error: true,
       });
     }
-  };
 
+    res.status(200).json({
+      data: updatedUserRecord,
+      message: "User data updated successfully",
+      success: true,
+      error: false,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Error updating user data",
+      error: true,
+      success: false,
+      details: error.message,
+    });
+  }
+};
 
-
-  // Delete user Record
+// Delete User Record
 const deletedUserRecord = async (req, res) => {
   try {
     const formid = req.params.id;
@@ -103,31 +101,33 @@ const deletedUserRecord = async (req, res) => {
 
     if (!deleteData) {
       return res.status(404).json({
-        message: 'Volunteer not found',
+        message: "User not found",
         success: false,
         error: true,
       });
     }
 
+<<<<<<< HEAD
     res.status(200).json({  
       message: 'Volunteer deleted successfully',
+=======
+    res.status(200).json({
+      message: "User deleted successfully",
+>>>>>>> fa0fcdcb294b88859a2790b2963e86d60643d521
       data: deleteData,
       success: true,
       error: false,
     });
   } catch (err) {
-    console.log('Error:', err);
+    console.error(err);
     res.status(500).json({
-      message: 'Error deleting volunteer',
+      message: "Error deleting user",
       err,
       success: false,
       error: true,
+      details: err.message,
     });
   }
 };
 
-
-
-
-
-module.exports = {postUserRecord,getUserRecord,putUserRecord,deletedUserRecord};
+module.exports = { postUserRecord, getUserRecord, putUserRecord, deletedUserRecord };

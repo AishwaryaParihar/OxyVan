@@ -4,7 +4,7 @@ import headlogo1 from "../../assets/flower-pot.png";
 
 const WhyDonate = () => {
   return (
-    <div className="px-6 pt-20 lg:px-16">
+    <div className="px-6 pt-20 lg:px-16 text-justify">
       <div className="flex justify-center ">
         <div className="heading01"> Why Tree Planting Matters</div>
         <img src={headlogo1} className="h-14 inline" alt="Leader Board Logo" />

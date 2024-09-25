@@ -55,7 +55,7 @@ const Register = () => {
 
   return (
     <>
-      <div className="w-full mt-32 px-4 md:px-16">
+      <div className="w-full mt-32 px-4 lg:px-16">
         <div className="flex justify-center">
           <h2 className="heading01 font-bold mb-8 md:text-3xl heading-donate">
             {' '}

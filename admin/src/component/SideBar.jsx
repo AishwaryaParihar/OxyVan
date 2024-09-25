@@ -25,10 +25,22 @@ const SideBar = () => {
           <div>
             <nav className="grid p-4">
               <Link
+                to={'dashboard'}
+                className="px-2 py-1 hover:bg-slate-100 hover:text-black font-semibold hover:font-semibold"
+              >
+                Dashboard
+              </Link>
+              <Link
                 to={'contactForm'}
                 className="px-2 py-1 hover:bg-slate-100 hover:text-black font-semibold hover:font-semibold"
               >
                 Contact Details
+              </Link>
+              <Link
+                to={'register'}
+                className="px-2 py-1 hover:bg-slate-100 hover:text-black hover:font-semibold"
+              >
+                Registration
               </Link>
               <Link
                 to={'samples'}
@@ -54,6 +66,7 @@ const SideBar = () => {
               >
                 User Record
               </Link>
+             
             </nav>
           </div>
         </aside>

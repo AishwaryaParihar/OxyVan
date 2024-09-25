@@ -103,8 +103,8 @@ const Hero = () => {
   })
 
   return (
-    <div className="hero flex flex-col md:flex-row items-center w-full bg-black bg-opacity-55 p-8 pt-36">
-      <div className="md:w-1/2 w-full text-white content-box">
+    <div className="hero flex flex-col md:flex-row items-center w-full bg-black bg-opacity-55 p-8 pt-36 px-4 lg:px-16" >
+      <div className="md:w-1/2 w-full text-white content-box ">
         <h1 className="text-4xl mb-4 font-bold">
           Welcome to Our Mission
         </h1>
@@ -121,7 +121,7 @@ const Hero = () => {
           </NavLink>
         </div> */}
       </div>
-      <div className="md:w-1/2 w-full flex justify-center mt-8 md:mt-0">
+      <div className="md:w-1/2 w-full flex justify-center text-justify mt-8 md:mt-0">
         <div className="grid grid-cols-2 gap-4 w-full">
           <div className="relative content-box w-full h-44 bg-gradient-to-r from-green-900 to-green-500 text-white text-sm p-4 flex flex-col justify-between rounded-lg">
             <h3 className="text-sm md:text-lg font-bold md:font-semibold md:mb-2">
