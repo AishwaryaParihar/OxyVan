@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SummaryApi from '../common/SummaryApi';
 import moment from 'moment';
 import Modal from './Modal'; // Import your new Modal component
-import { RiDeleteBinLine } from "react-icons/ri";
-import { MdOutlineModeEdit } from "react-icons/md";
+import { RiDeleteBinLine } from 'react-icons/ri';
+import { MdOutlineModeEdit } from 'react-icons/md';
 
 const UserRecord = () => {
   const [datas, setData] = useState([]);
@@ -19,7 +19,7 @@ const UserRecord = () => {
       const fetchContactData = await fetch(
         SummaryApi.getUserRecordDetails.url,
         {
-          method: SummaryApi.getUserRecordDetails.method, 
+          method: SummaryApi.getUserRecordDetails.method,
           credentials: 'include',
         }
       );
@@ -102,8 +102,23 @@ const UserRecord = () => {
     fetchData();
   }, []);
 
+  // Filter data based on the active tab
+  const getFilteredData = () => {
+    switch (activeTab) {
+      case 'money':
+        return datas.filter((data) => data.ammount || data.utrNumber);
+      case 'tree':
+        return datas.filter((data) => data.trees && data.trees.length > 0);
+      case 'land':
+        return datas.filter((data) => data.landArea || data.landAddress);
+      default:
+        return datas;
+    }
+  };
+
   const renderTableRows = () => {
-    return datas.map((details, index) => (
+    const filteredData = getFilteredData();
+    return filteredData.map((details, index) => (
       <tr key={index} className="border-b text-center font-semibold">
         <td className="p-2">{index + 1}</td>
         <td className="p-2">
@@ -180,8 +195,8 @@ const UserRecord = () => {
 
         {activeTab === 'land' && (
           <>
-            <td className="p-2"> 
-              {editMode === details._id ?(
+            <td className="p-2">
+              {editMode === details._id ? (
                 <input
                   type="text"
                   name="landArea"
@@ -223,13 +238,13 @@ const UserRecord = () => {
                 onClick={() => toggleEditMode(details._id)}
                 className="bg-blue-500 text-white p-1 rounded mx-2"
               >
-          <MdOutlineModeEdit />
+                <MdOutlineModeEdit />
               </button>
               <button
                 onClick={() => deleteData(details._id)}
                 className="bg-red-500 text-white p-1 rounded mx-2"
               >
-               <RiDeleteBinLine  />
+                <RiDeleteBinLine />
               </button>
             </div>
           )}
@@ -264,7 +279,7 @@ const UserRecord = () => {
           }`}
           onClick={() => setActiveTab('tree')}
         >
-          Trees
+          Tree
         </button>
         <button
           className={`p-2 mx-2 transition-all duration-300 ease-in-out transform ${
@@ -278,39 +293,41 @@ const UserRecord = () => {
         </button>
       </div>
 
-      <table className="w-full border border-collapse">
-        <thead>
-          <tr>
-            <th className="p-2 border">#</th>
-            <th className="p-2 border">Name</th>
-            <th className="p-2 border">Number</th>
-            {activeTab === 'money' && (
-              <>
-                <th className="p-2 border">ammount</th>
-                <th className="p-2 border">UTR Number</th>
-              </>
-            )}
-            {activeTab === 'tree' && (
-              <th className="p-2 border">Tree Details</th>
-            )}
-            {activeTab === 'land' && (
-              <>
-                <th className="p-2 border">Land Area</th>
-                <th className="p-2 border">Land Address</th>
-              </>
-            )}
-            <th className="p-2 border">Actions</th>
-          </tr>
-        </thead>
-        <tbody>{renderTableRows()}</tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full bg-white border border-collapse">
+          <thead>
+            <tr className="bg-gray-200 border text-center">
+              <th className="p-2">S.No</th>
+              <th className="p-2">Name</th>
+              <th className="p-2">Mobile Number</th>
+              {activeTab === 'money' && (
+                <>
+                  <th className="p-2">Amount</th>
+                  <th className="p-2">UTR Number</th>
+                </>
+              )}
+              {activeTab === 'tree' && <th className="p-2">Tree Details</th>}
+              {activeTab === 'land' && (
+                <>
+                  <th className="p-2">Land Area</th>
+                  <th className="p-2">Land Address</th>
+                </>
+              )}
+              <th className="p-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>{renderTableRows()}</tbody>
+        </table>
+      </div>
 
       {/* Modal for tree details */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        treeDetails={selectedTreeDetails}
-      />
+      {isModalOpen && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          treeDetails={selectedTreeDetails}
+        />
+      )}
     </div>
   );
 };
