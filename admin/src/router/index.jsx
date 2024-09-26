@@ -11,6 +11,7 @@ import UserRecord from "../component/UserRecord";
 import UserRecordForm from "../component/UserRecordForm";
 import VolunteerDetails from "../component/VolunteerDetails";
 import Register from "../component/Register";
+import TreeCategory from "../component/TreeCategory";
 
 
 export const routeradmin = createBrowserRouter([
@@ -45,6 +46,10 @@ export const routeradmin = createBrowserRouter([
             {
               path: "userRecordForm",
               element: <UserRecordForm/>,
+            },
+            {
+              path: "tree-category",
+              element: <TreeCategory />,
             },
             {
               path: "register",

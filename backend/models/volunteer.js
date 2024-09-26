@@ -4,6 +4,7 @@ const schema = mongoose.Schema;
 
 const volunteerSchema = new schema(
   {
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     name: {
       type: String,
       required: true,
