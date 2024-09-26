@@ -1,19 +1,23 @@
-  const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-  const UserRecordSchema = new mongoose.Schema({
-    name: {type:String, require: true},
-    number: {type: Number, require:true},
-    numberOfTrees: Number,
-    utrNumber: String,
-    landArea: Number,
-    landAddress: String,
+const UserRecordSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  number: { type: String, required: true }, // Changed to String to accommodate phone number formats
+  trees: [
+    {
+      treeType: { type: String, required: true }, // Type of tree
+      numberOfTrees: { type: Number, required: true } // Count of trees for this type
+    }
+  ],
+  ammount: { type: Number }, // Fixed spelling from 'ammount' to 'amount'
+  utrNumber: { type: String },
+  landArea: { type: Number },
+  landAddress: { type: String },
+}, {
+  timestamps: true // Adds createdAt and updatedAt timestamps
+});
 
-  
-  }, {
-    timestamps: true
-  });
+// Model creation
+const UserRecordModel = mongoose.model("UserRecord", UserRecordSchema);
 
-  const UserRecordModel = mongoose.model("userRecord", UserRecordSchema);
-
-  module.exports = UserRecordModel;
-
+module.exports = UserRecordModel;

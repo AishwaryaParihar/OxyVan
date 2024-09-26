@@ -8,7 +8,10 @@ const TreeDonate = () => {
 
 {/* <DonateOptions heading="Donate Tree"/> */}
 
-<DonateOptions heading="Donate Tree"/>
+{/* <DonateOptions heading="Donate Tree"/>
+<ReusableForm formType="donateLand" /> */}
+<ReusableForm formType="donateTrees" />
+
 
 
     </div>
