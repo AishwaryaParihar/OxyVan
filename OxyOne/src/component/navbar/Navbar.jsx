@@ -25,6 +25,7 @@ const Navbar = () => {
             className="md:block text-white bg-second hover:bg-second-hover focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-9 mr-11 py-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
           >
             Donate 
+            
           </NavLink>
           {/* <NavLink
             to="/certificate"
@@ -69,6 +70,7 @@ const Navbar = () => {
                 aria-current="page"
               >
                 Home
+     
               </NavLink>
             </li>
             <li>
