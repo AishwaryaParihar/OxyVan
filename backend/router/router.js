@@ -129,6 +129,15 @@ router.delete('/delete-volunteer/:id', deleteVolunteer);
 
 
 // tree  routing 
-router.post('/category/:id',  treeCategory)
+router.get('/getuser', treeCategoryyy.getUsers);
+
+// Route to add a new user
+router.post('/getuser', treeCategoryyy.addUser);
+
+// Route to update user details
+router.put('/getuser/:id', treeCategoryyy.updateUser);
+
+// Route to delete a user
+router.delete('/getuser/:id', treeCategoryyy.deleteUser);
 
 module.exports = router;

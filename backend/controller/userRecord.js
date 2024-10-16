@@ -107,8 +107,13 @@ const deletedUserRecord = async (req, res) => {
       });
     }
 
+<<<<<<< HEAD
+    res.status(200).json({  
+      message: 'Volunteer deleted successfully',
+=======
     res.status(200).json({
       message: "User deleted successfully",
+>>>>>>> fa0fcdcb294b88859a2790b2963e86d60643d521
       data: deleteData,
       success: true,
       error: false,
