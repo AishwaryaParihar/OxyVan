@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { RiAdminFill } from 'react-icons/ri';
-
+import { AiFillDashboard } from "react-icons/ai";
 import '../App.css';
 import { Link, Outlet } from 'react-router-dom';
 import Heading from './Heading';
@@ -22,14 +22,17 @@ const SideBar = () => {
           </div>
 
           {/***navigation */}
-          <div>
-            <nav className="grid p-4">
+          <div className='flex justify-center items-center'>
+            <nav className="grid p-4 ">
+              <div className="flex items-center">
+              <AiFillDashboard/>
               <Link
                 to={'dashboard'}
                 className="px-2 py-1 hover:bg-slate-100 hover:text-black font-semibold hover:font-semibold"
               >
                 Dashboard
               </Link>
+              </div>
               <Link
                 to={'contactForm'}
                 className="px-2 py-1 hover:bg-slate-100 hover:text-black font-semibold hover:font-semibold"

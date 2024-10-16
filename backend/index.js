@@ -33,7 +33,7 @@ const upload = multer({ dest: './files' });
 
 app.use('/api', router);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8083;
 
 connectDB()
   .then(() => {

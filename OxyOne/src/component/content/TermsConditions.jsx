@@ -1,4 +1,5 @@
 import React from 'react'
+import Payment from './Payment'
 
 const TermsConditions = () => {
   return (
@@ -25,7 +26,7 @@ const TermsConditions = () => {
           If any individual provides false information, incorrect updates, or engages in misconduct, the Oxivan Environment Protection Committee reserves the right to immediately suspend or ban them from future benefits. This decision will be final and binding.
         </p>
       </div>
-      
+      <Payment/>
     </div>
 
   )

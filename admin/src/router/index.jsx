@@ -50,6 +50,7 @@ export const routeradmin = createBrowserRouter([
               element: <UserRecordForm/>,
             },
             {
+          
               path: "dashboard",
               element: <Dashboard/>,
               children:[
