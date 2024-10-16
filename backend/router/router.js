@@ -25,6 +25,8 @@ const {
 } = require('../controller/donorGet');
 const treeCategoryyy = require('../controller/treeCategory');
 const treeCategory = require('../controller/treeCategory');
+const { paymentController } = require('../controller/payment');
+
 
 // storage
 const storage = multer.diskStorage({
@@ -127,6 +129,8 @@ router.get('/get-Volunteers', getVolunteer);
 router.put('/update-volunteer/:id', updateVolunteer);
 router.delete('/delete-volunteer/:id', deleteVolunteer);
 
+// payment
+router.post('/payment-post',paymentController)
 
 // tree  routing 
 router.get('/getuser', treeCategoryyy.getUsers);

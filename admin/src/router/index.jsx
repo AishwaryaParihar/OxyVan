@@ -50,10 +50,7 @@ export const routeradmin = createBrowserRouter([
               element: <UserRecordForm/>,
             },
             {
-<<<<<<< HEAD
-              path: "tree-category",
-              element: <TreeCategory />,
-=======
+          
               path: "dashboard",
               element: <Dashboard/>,
               children:[
@@ -62,7 +59,6 @@ export const routeradmin = createBrowserRouter([
                   element:<TotalTrees/>
                 }
               ]
->>>>>>> 1f8849619fcc0ef9b56e33f0b44c3cffba51bad2
             },
             {
               path: "register",
